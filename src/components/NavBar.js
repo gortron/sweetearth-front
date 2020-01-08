@@ -8,7 +8,7 @@ import {
   Container,
   Header
 } from "semantic-ui-react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -23,14 +23,18 @@ const NavBar = () => {
               alt="icon"
             />
           </Menu.Item>
-
-          <Menu.Item header>
+          <Menu.Item header as={Link} to="/">
             sweetearth
-            {/* <Header inverted>sweetearth</Header> */}
           </Menu.Item>
-          <Menu.Item as="a">About</Menu.Item>
-          <Menu.Item as="a">Projects</Menu.Item>
-          <Menu.Item as="a">Pledge</Menu.Item>
+          <Menu.Item as={Link} to="/about">
+            About
+          </Menu.Item>
+          <Menu.Item as={Link} to="/projects">
+            Projects
+          </Menu.Item>
+          <Menu.Item as={Link} to="/pledge">
+            Pledge
+          </Menu.Item>
           <Menu.Item position="right">
             {isAuthenticated ? (
               <Button onClick={() => logout()}>Log out</Button>
