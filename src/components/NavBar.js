@@ -1,24 +1,32 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0";
-import { Segment, Button, Menu, Container, Header } from "semantic-ui-react";
+import {
+  Responsive,
+  Segment,
+  Button,
+  Menu,
+  Container,
+  Header
+} from "semantic-ui-react";
+import { Router, Route, Switch } from "react-router-dom";
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
     <Segment inverted textAlign="center" vertical>
-      <Menu borderless inverted fixed="top" size="large">
+      <Menu borderless inverted fixed="top" size="large" stackable>
         <Container>
-          <Menu.Item>
+          <Menu.Item position="left">
             <img
               src="https://image.flaticon.com/icons/svg/2439/2439044.svg"
               alt="icon"
             />
           </Menu.Item>
-          <Menu.Item>
-            <Header inverted contentAlign="middle">
-              sweetearth
-            </Header>
+
+          <Menu.Item header>
+            sweetearth
+            {/* <Header inverted>sweetearth</Header> */}
           </Menu.Item>
           <Menu.Item as="a">About</Menu.Item>
           <Menu.Item as="a">Projects</Menu.Item>
