@@ -12,16 +12,12 @@ import { Router, Route, Switch } from "react-router-dom";
 import history from "./utils/history";
 
 const App = () => {
-  const [user, setUser] = useState({});
-
-  const setUserAfterAuth = () => {};
-
   return (
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
       <div className="App">
         <Router history={history}>
           <header>
-            <NavBar user={user} />
+            <NavBar />
             <Footer />
             {/* <Elements>
               <CheckoutForm />

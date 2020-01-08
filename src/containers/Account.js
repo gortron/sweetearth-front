@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useAuth0 } from "../react-auth0";
+import { Button } from "semantic-ui-react";
 
 const Account = () => {
-  const { user } = useAuth0();
+  const { user, logout } = useAuth0();
   const [userData, setUserData] = useState({});
 
   const getUser = async user => {
@@ -17,7 +18,12 @@ const Account = () => {
     // getUser()
   });
 
-  return <h6>{user.name}'s Account</h6>;
+  return (
+    <Fragment>
+      <h6>{user.name}'s Account</h6>
+      <Button onClick={() => logout()}>Log out</Button>
+    </Fragment>
+  );
 };
 
 export default Account;

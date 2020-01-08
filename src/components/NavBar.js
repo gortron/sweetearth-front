@@ -3,8 +3,14 @@ import { useAuth0 } from "../react-auth0";
 import { Dropdown, Segment, Button, Menu, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-const NavBar = user => {
-  const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
+const NavBar = () => {
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    loading,
+    user
+  } = useAuth0();
 
   return (
     <Segment inverted textAlign="center" vertical>
@@ -28,15 +34,10 @@ const NavBar = user => {
           <Menu.Item as={Link} to="/pledge">
             Pledge
           </Menu.Item>
-          {isAuthenticated ? (
-            <Fragment>
-              <Menu.Item as={Link} to="/account" position="right">
-                My Account
-              </Menu.Item>
-              <Menu.Item position="right">
-                <Button onClick={() => logout()}>Log out</Button>
-              </Menu.Item>
-            </Fragment>
+          {user ? (
+            <Menu.Item as={Link} to="/account" position="right">
+              🌱 {user.email}
+            </Menu.Item>
           ) : (
             <Menu.Item position="right">
               <Button primary onClick={() => loginWithRedirect({})}>
@@ -66,4 +67,15 @@ My Account
 <Dropdown.Item onClick={() => logout()}>Log Out</Dropdown.Item>
 </Dropdown.Menu>
 </Dropdown> */
+}
+
+{
+  /* <Fragment>
+<Menu.Item as={Link} to="/account" position="right">
+{user.email}
+</Menu.Item>
+<Menu.Item position="right">
+<Button onClick={() => logout()}>Log out</Button>
+</Menu.Item>
+</Fragment> */
 }
