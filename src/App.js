@@ -7,6 +7,9 @@ import Pledge from "./containers/Pledge";
 import About from "./containers/About";
 import Account from "./containers/Account";
 import { Elements, StripeProvider } from "react-stripe-elements";
+import { Segment } from "semantic-ui-react";
+import "./App.css";
+
 import CheckoutForm from "./components/CheckoutForm";
 import { Router, Route, Switch } from "react-router-dom";
 import history from "./utils/history";
@@ -14,24 +17,24 @@ import history from "./utils/history";
 const App = () => {
   return (
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
-      <div className="App">
-        <Router history={history}>
-          <header>
+      <Router history={history}>
+        <div className="App">
+          <Segment inverted vertical textAlign="center">
             <NavBar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/projects" component={Projects} />
+              <Route exact path="/pledge" component={Pledge} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/account" component={Account} />
+            </Switch>
             <Footer />
             {/* <Elements>
               <CheckoutForm />
             </Elements> */}
-          </header>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/projects" component={Projects} />
-            <Route exact path="/pledge" component={Pledge} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/account" component={Account} />
-          </Switch>
-        </Router>
-      </div>
+          </Segment>
+        </div>
+      </Router>
     </StripeProvider>
   );
 };
