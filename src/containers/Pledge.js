@@ -7,6 +7,7 @@ import CheckoutForm from "../components/CheckoutForm";
 const Pledge = () => {
   const [projects, setProjects] = useState([]);
   const [project, setProject] = useState({});
+  const [paid, setPaid] = useState(false);
 
   const getProjects = async () => {
     const endpoint = `http://localhost:3000/projects`;
@@ -17,6 +18,10 @@ const Pledge = () => {
 
   const pickProject = project => {
     setProject({ project });
+  };
+
+  const confirmPayment = () => {
+    setPaid(true);
   };
 
   useEffect(() => {
@@ -40,6 +45,7 @@ const Pledge = () => {
               <ProjectCard
                 key={idx}
                 project={project.attributes}
+                context={"pledge"}
                 pickProject={pickProject}
               ></ProjectCard>
             );
@@ -53,8 +59,16 @@ const Pledge = () => {
         style={{ fontSize: "3em" }}
       ></Header>
       <Elements>
-        <CheckoutForm />
+        <CheckoutForm confirmPayment={confirmPayment} />
       </Elements>
+      {paid ? (
+        <Header
+          inverted
+          as="h1"
+          content="3. Payment Confirmed"
+          style={{ fontSize: "3em" }}
+        ></Header>
+      ) : null}
     </Container>
   );
 };

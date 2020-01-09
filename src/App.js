@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
 import Home from "./containers/Home";
 import Projects from "./containers/Projects";
+import Project from "./containers/Project";
 import Pledge from "./containers/Pledge";
 import About from "./containers/About";
 import Account from "./containers/Account";
@@ -22,6 +23,11 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/projects" component={Projects} />
+              <Route
+                exact
+                path="/projects/:name"
+                render={props => <Project props={props} />}
+              />
               <Route exact path="/pledge" component={Pledge} />
               <Route exact path="/about" component={About} />
               <Route exact path="/account" component={Account} />
