@@ -1,7 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Container, Header, Card } from "semantic-ui-react";
+import ProjectCard from "../components/ProjectCard";
+import { Elements } from "react-stripe-elements";
+import CheckoutForm from "../components/CheckoutForm";
 
 const Pledge = () => {
-  return <h6>Pledge</h6>;
+  const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState({});
+
+  const getProjects = async () => {
+    const endpoint = `http://localhost:3000/projects`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    setProjects(data);
+  };
+
+  const pickProject = project => {
+    setProject({ project });
+  };
+
+  useEffect(() => {
+    if (projects.length === 0) getProjects();
+  });
+
+  return (
+    <Container className="content">
+      <Header
+        inverted
+        as="h1"
+        content="1. Pick a Project"
+        style={{ fontSize: "3em" }}
+      ></Header>
+      <Card.Group itemsPerRow={2}>
+        {projects.length === 0 ? (
+          <p>Loading...</p>
+        ) : (
+          projects.data.map((project, idx) => {
+            return (
+              <ProjectCard
+                key={idx}
+                project={project.attributes}
+                pickProject={pickProject}
+              ></ProjectCard>
+            );
+          })
+        )}
+      </Card.Group>
+      <Header
+        inverted
+        as="h1"
+        content="2. Payment Details"
+        style={{ fontSize: "3em" }}
+      ></Header>
+      <Elements>
+        <CheckoutForm />
+      </Elements>
+    </Container>
+  );
 };
 
 export default Pledge;

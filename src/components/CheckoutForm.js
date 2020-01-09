@@ -8,12 +8,13 @@ class CheckoutForm extends Component {
     this.submit = this.submit.bind(this);
   }
 
-  async submit(ev) {
+  async submit(event) {
+    event.preventDefault();
     let { token } = await this.props.stripe.createToken({ name: "Name" });
-    let response = await fetch("/payment", {
+    let response = await fetch("http://localhost:3000/charge", {
       method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: token.id
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(token.id)
     });
 
     if (response.ok) console.log("Purchase Complete!");

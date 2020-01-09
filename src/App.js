@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
 import Home from "./containers/Home";
@@ -6,11 +6,9 @@ import Projects from "./containers/Projects";
 import Pledge from "./containers/Pledge";
 import About from "./containers/About";
 import Account from "./containers/Account";
-import { Elements, StripeProvider } from "react-stripe-elements";
+import { StripeProvider } from "react-stripe-elements";
 import { Segment } from "semantic-ui-react";
 import "./App.css";
-
-import CheckoutForm from "./components/CheckoutForm";
 import { Router, Route, Switch } from "react-router-dom";
 import history from "./utils/history";
 
@@ -29,9 +27,6 @@ const App = () => {
               <Route exact path="/account" component={Account} />
             </Switch>
             <Footer />
-            {/* <Elements>
-              <CheckoutForm />
-            </Elements> */}
           </Segment>
         </div>
       </Router>

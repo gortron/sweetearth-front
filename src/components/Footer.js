@@ -17,7 +17,7 @@ const Footer = () => {
         inverted
         as="footer"
         fixed="bottom"
-        size="medium"
+        size="small"
         stackable
       >
         <Menu.Item as={Link} to="/about">
