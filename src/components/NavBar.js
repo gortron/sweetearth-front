@@ -12,6 +12,26 @@ const NavBar = () => {
     user
   } = useAuth0();
 
+  //  $r.hooks[0].subHooks[0].value to investigate user or isAuthenticated
+
+  const handleAuth = async () => {
+    await loginWithRedirect({});
+    isAuthenticated &&
+      fetch("http://localhost:3000/users/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user)
+      });
+  };
+
+  const saveOrCreateUser = async () => {
+    await fetch("http://localhost:3000/users/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user)
+    });
+  };
+
   return (
     <Container as="nav">
       <Menu borderless inverted fixed="top" size="large" stackable>
@@ -39,7 +59,7 @@ const NavBar = () => {
           </Menu.Item>
         ) : (
           <Menu.Item position="right">
-            <Button primary onClick={() => loginWithRedirect({})}>
+            <Button primary onClick={() => handleAuth()}>
               Sign Up / Log In
             </Button>
           </Menu.Item>
@@ -50,6 +70,12 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+{
+  /* <Button primary onClick={() => loginWithRedirect({})}>
+              Sign Up / Log In
+            </Button> */
+}
 
 {
   /* <Button onClick={() => logout()}>Log out</Button> */

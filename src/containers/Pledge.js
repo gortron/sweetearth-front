@@ -4,17 +4,15 @@ import ProjectCard from "../components/ProjectCard";
 import { Elements } from "react-stripe-elements";
 import CheckoutForm from "../components/CheckoutForm";
 
-const Pledge = () => {
-  const [projects, setProjects] = useState([]);
+const Pledge = props => {
+  const { data, getProjects } = props;
+
   const [project, setProject] = useState({});
   const [paid, setPaid] = useState(false);
 
-  const getProjects = async () => {
-    const endpoint = `http://localhost:3000/projects`;
-    const response = await fetch(endpoint);
-    const data = await response.json();
-    setProjects(data);
-  };
+  useEffect(() => {
+    if (!data) getProjects();
+  });
 
   const pickProject = project => {
     setProject({ project });
@@ -23,10 +21,6 @@ const Pledge = () => {
   const confirmPayment = () => {
     setPaid(true);
   };
-
-  useEffect(() => {
-    if (projects.length === 0) getProjects();
-  });
 
   return (
     <Container className="content">
@@ -37,10 +31,10 @@ const Pledge = () => {
         style={{ fontSize: "3em" }}
       ></Header>
       <Card.Group itemsPerRow={2}>
-        {projects.length === 0 ? (
+        {!data ? (
           <p>Loading...</p>
         ) : (
-          projects.data.map((project, idx) => {
+          data.map((project, idx) => {
             return (
               <ProjectCard
                 key={idx}
@@ -65,7 +59,7 @@ const Pledge = () => {
         <Header
           inverted
           as="h1"
-          content="3. Payment Confirmed"
+          content="3. Payment Confirmed."
           style={{ fontSize: "3em" }}
         ></Header>
       ) : null}

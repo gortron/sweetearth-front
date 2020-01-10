@@ -3,7 +3,8 @@ import { Card, Icon, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const ProjectCard = props => {
-  const { name, description, category, imgUrl, siteUrl } = props.project;
+  const { project } = props;
+  const { name, description, category, imgUrl, siteUrl } = project;
 
   const projectUrl = () => {
     return "/projects/" + name.replace(/\s+/, "-").toLowerCase();

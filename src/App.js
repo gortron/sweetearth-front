@@ -42,8 +42,18 @@ const App = () => {
                   <Projects {...projects} getProjects={getProjects} />
                 )} // this seems to overwrite any other props being passed
               />
-              <Route path="/projects/:name" component={Project} />
-              <Route path="/pledge" component={Pledge} />
+              <Route
+                path="/projects/:name"
+                render={props => (
+                  <Project {...projects} getProjects={getProjects} />
+                )}
+              />
+              <Route
+                path="/pledge"
+                render={props => (
+                  <Pledge {...projects} getProjects={getProjects} />
+                )}
+              />
               <Route path="/about" component={About} />
               <Route path="/account" component={Account} />
             </Switch>
