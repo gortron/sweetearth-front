@@ -6,10 +6,10 @@ const Project = () => {
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    if (!project) getProjects();
+    if (!project) getProject();
   });
 
-  const getProjects = async () => {
+  const getProject = async () => {
     const endpoint = "http://localhost:3000" + window.location.pathname;
     const response = await fetch(endpoint);
     const data = await response.json();

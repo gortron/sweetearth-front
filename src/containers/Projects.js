@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
-const Projects = () => {
-  const [projects, setProjects] = useState([]);
+const Projects = props => {
+  const { data, getProjects } = props;
 
   useEffect(() => {
-    if (projects.length === 0) getProjects();
+    if (!data) getProjects();
   });
-
-  const getProjects = async () => {
-    const endpoint = `http://localhost:3000/projects`;
-    const response = await fetch(endpoint);
-    const data = await response.json();
-    setProjects(data);
-  };
 
   return (
     <Container className="content">
@@ -25,10 +18,10 @@ const Projects = () => {
         style={{ fontSize: "3em" }}
       ></Header>
       <Card.Group itemsPerRow={2}>
-        {projects.length === 0 ? (
+        {!data ? (
           <p>Loading...</p>
         ) : (
-          projects.data.map((project, idx) => {
+          data.map((project, idx) => {
             return (
               <ProjectCard
                 key={idx}

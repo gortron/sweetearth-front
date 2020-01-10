@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
 import Home from "./containers/Home";
@@ -14,6 +14,19 @@ import { Router, Route, Switch } from "react-router-dom";
 import history from "./utils/history";
 
 const App = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    if (projects.length === 0) getProjects();
+  });
+
+  const getProjects = async () => {
+    const endpoint = `http://localhost:3000/projects`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    setProjects(data);
+  };
+
   return (
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
       <Router history={history}>
@@ -22,15 +35,17 @@ const App = () => {
             <NavBar />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/projects" component={Projects} />
               <Route
                 exact
-                path="/projects/:name"
-                render={props => <Project props={props} />}
+                path="/projects"
+                render={props => (
+                  <Projects {...projects} getProjects={getProjects} />
+                )} // this seems to overwrite any other props being passed
               />
-              <Route exact path="/pledge" component={Pledge} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/account" component={Account} />
+              <Route path="/projects/:name" component={Project} />
+              <Route path="/pledge" component={Pledge} />
+              <Route path="/about" component={About} />
+              <Route path="/account" component={Account} />
             </Switch>
             <Footer />
           </Segment>
@@ -41,3 +56,7 @@ const App = () => {
 };
 
 export default App;
+
+{
+  /* render={props => <Project props={props} />} */
+}
