@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Header, Card } from "semantic-ui-react";
-import ProjectCard from "../components/ProjectCard";
 import { Elements } from "react-stripe-elements";
+
+import ProjectCard from "../components/ProjectCard";
 import CheckoutForm from "../components/CheckoutForm";
 
 const Pledge = props => {
@@ -18,7 +19,7 @@ const Pledge = props => {
     setProject({ project });
   };
 
-  const confirmPayment = () => {
+  const confirmPayment = async () => {
     setPaid(true);
   };
 
@@ -53,7 +54,10 @@ const Pledge = props => {
         style={{ fontSize: "3em" }}
       ></Header>
       <Elements>
-        <CheckoutForm confirmPayment={confirmPayment} />
+        <CheckoutForm
+          confirmPayment={confirmPayment}
+          project={{ ...project }}
+        />
       </Elements>
       {paid ? (
         <Header
