@@ -125,3 +125,7 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
 .ui.inverted.vertical.segment footer.ui.segment a {
   color: white;
 }
+
+/* Attempt to style Stripe fields */
+.StripeElement {
+}

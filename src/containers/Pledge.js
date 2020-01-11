@@ -10,13 +10,37 @@ const Pledge = props => {
 
   const [project, setProject] = useState({});
   const [paid, setPaid] = useState(false);
+  const [status, setStatus] = useState({
+    projectSelected: false,
+    paymentSucceeded: false
+  });
 
   useEffect(() => {
     if (!data) getProjects();
   });
 
   const pickProject = project => {
+    setStatus({ ...status, projectSelected: true });
     setProject({ project });
+  };
+
+  const renderProjects = () => {
+    let projects = [];
+    status.projectSelected
+      ? (projects = data.filter(
+          proj => proj.attributes.name === project.project.name
+        ))
+      : (projects = data);
+    return projects.map((project, idx) => {
+      return (
+        <ProjectCard
+          key={idx}
+          project={project.attributes}
+          context={"pledge"}
+          pickProject={pickProject}
+        ></ProjectCard>
+      );
+    });
   };
 
   const confirmPayment = async () => {
@@ -24,7 +48,7 @@ const Pledge = props => {
   };
 
   return (
-    <Container className="content">
+    <Container className="page">
       <Header
         inverted
         as="h1"
@@ -32,25 +56,12 @@ const Pledge = props => {
         style={{ fontSize: "3em" }}
       ></Header>
       <Card.Group itemsPerRow={2}>
-        {!data ? (
-          <p>Loading...</p>
-        ) : (
-          data.map((project, idx) => {
-            return (
-              <ProjectCard
-                key={idx}
-                project={project.attributes}
-                context={"pledge"}
-                pickProject={pickProject}
-              ></ProjectCard>
-            );
-          })
-        )}
+        {!data ? <p>Loading...</p> : renderProjects()}
       </Card.Group>
       <Header
         inverted
         as="h1"
-        content="2. Payment Details"
+        content="2. Billing Information"
         style={{ fontSize: "3em" }}
       ></Header>
       <Elements>
