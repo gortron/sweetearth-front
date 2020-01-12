@@ -56,7 +56,6 @@ const CheckoutForm = props => {
             base: {
               fontSize: "16px",
               color: "#424770",
-              backgroundColor: "white",
               fontFamily: "Open Sans, sans-serif",
               letterSpacing: "0.025em",
               "::placeholder": {

@@ -128,4 +128,5 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
 
 /* Attempt to style Stripe fields */
 .StripeElement {
+  background-color: white;
 }

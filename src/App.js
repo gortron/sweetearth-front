@@ -39,7 +39,11 @@ const App = () => {
                 exact
                 path="/projects"
                 render={props => (
-                  <Projects {...projects} getProjects={getProjects} />
+                  <Projects
+                    {...projects}
+                    getProjects={getProjects}
+                    context="index"
+                  />
                 )} // this seems to overwrite any other props being passed
               />
               <Route

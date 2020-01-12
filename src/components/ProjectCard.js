@@ -3,7 +3,7 @@ import { Card, Icon, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const ProjectCard = props => {
-  const { project } = props;
+  const { project, pickProject } = props;
   const { name, description, category, imgUrl, siteUrl } = project;
 
   const projectUrl = () => {
@@ -17,7 +17,7 @@ const ProjectCard = props => {
           <Button
             primary
             content="Pledge"
-            onClick={() => props.pickProject(props.project)}
+            onClick={() => pickProject(project)}
           ></Button>
         );
       case "index":

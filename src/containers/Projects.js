@@ -3,18 +3,29 @@ import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
 const Projects = props => {
-  const { data, getProjects } = props;
+  const { context, data, getProjects, pickProject } = props;
 
   useEffect(() => {
     if (!data) getProjects();
   });
+
+  const handleTitle = () => {
+    let title = "";
+    if (context === "index") {
+      title =
+        "These projects are curated for their ecological and societal impact.";
+    } else {
+      title = "1. Pick a Project";
+    }
+    return title;
+  };
 
   return (
     <Container className="content">
       <Header
         inverted
         as="h1"
-        content="These projects are curated for their ecological and societal impact."
+        content={handleTitle()}
         style={{ fontSize: "3em" }}
       ></Header>
       <Card.Group itemsPerRow={2}>
@@ -26,7 +37,8 @@ const Projects = props => {
               <ProjectCard
                 key={idx}
                 project={project.attributes}
-                context={"index"}
+                context={context}
+                pickProject={pickProject}
               ></ProjectCard>
             );
           })
