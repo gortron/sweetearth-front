@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
+import PrivateRoute from "./components/PrivateRoute.js";
 import Home from "./containers/Home";
 import Projects from "./containers/Projects";
 import Project from "./containers/Project";
@@ -59,7 +60,7 @@ const App = () => {
                 )}
               />
               <Route path="/about" component={About} />
-              <Route path="/account" component={Account} />
+              <PrivateRoute path="/account" component={Account} />
             </Switch>
             <Footer />
           </Segment>
@@ -70,3 +71,7 @@ const App = () => {
 };
 
 export default App;
+
+{
+  /* <Route path="/account" component={Account} /> */
+}

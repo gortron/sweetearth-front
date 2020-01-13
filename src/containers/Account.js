@@ -1,12 +1,16 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useAuth0 } from "../react-auth0";
-import { Button } from "semantic-ui-react";
+import { Container, Header, Button } from "semantic-ui-react";
 
 const Account = () => {
-  const { user, logout } = useAuth0();
-  const [userData, setUserData] = useState({});
+  const { loading, user, logout } = useAuth0();
+  const [userData, setUserData] = useState(null);
 
-  const getUser = async user => {
+  useEffect(() => {
+    if (user && !userData) getUser();
+  });
+
+  const getUser = async () => {
     // this function should take the authenticated user's email address, and use it to query the backend for the user's pledge history
     const endpoint = `http://localhost:3000/users/${user.email}`;
     const response = await fetch(endpoint);
@@ -14,15 +18,33 @@ const Account = () => {
     setUserData(data);
   };
 
-  useEffect(() => {
-    // getUser()
-  });
+  const renderPledges = () => {
+    debugger;
+    if (userData) {
+      const pledges = userData.included[0];
+      return pledges.map(pledge => {
+        return renderPledge(pledge);
+      });
+    }
+  };
 
-  return (
-    <Fragment>
-      <h6>{user.name}'s Account</h6>
+  const renderPledge = pledge => {
+    return <p>pledge.amount</p>;
+  };
+
+  return loading || !user ? (
+    <div>Loading...</div>
+  ) : (
+    <Container className="page">
+      <Header
+        inverted
+        as="h1"
+        content="Your Account"
+        style={{ fontSize: "3em" }}
+      ></Header>
+      {renderPledges()}
       <Button onClick={() => logout()}>Log out</Button>
-    </Fragment>
+    </Container>
   );
 };
 
