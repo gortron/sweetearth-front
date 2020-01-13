@@ -21,7 +21,7 @@ const Projects = props => {
   };
 
   return (
-    <Container className="content">
+    <Container className={context}>
       <Header
         inverted
         as="h1"

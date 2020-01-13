@@ -70,7 +70,3 @@ const App = () => {
 };
 
 export default App;
-
-{
-  /* render={props => <Project props={props} />} */
-}

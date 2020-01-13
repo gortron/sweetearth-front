@@ -70,36 +70,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-{
-  /* <Button primary onClick={() => loginWithRedirect({})}>
-              Sign Up / Log In
-            </Button> */
-}
-
-{
-  /* <Button onClick={() => logout()}>Log out</Button> */
-}
-
-{
-  /* <Dropdown item text="dropdown">
-{user.name}
-<Dropdown.Menu>
-<Dropdown.Item as={Link} to="/account">
-My Account
-</Dropdown.Item>
-<Dropdown.Item onClick={() => logout()}>Log Out</Dropdown.Item>
-</Dropdown.Menu>
-</Dropdown> */
-}
-
-{
-  /* <Fragment>
-<Menu.Item as={Link} to="/account" position="right">
-{user.email}
-</Menu.Item>
-<Menu.Item position="right">
-<Button onClick={() => logout()}>Log out</Button>
-</Menu.Item>
-</Fragment> */
-}

@@ -27,7 +27,7 @@ const Pledge = props => {
   };
 
   return (
-    <Container className="content">
+    <Container className="page">
       {status === "unselected" ? (
         <Projects
           data={data}

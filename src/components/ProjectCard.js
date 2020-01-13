@@ -51,21 +51,3 @@ const ProjectCard = props => {
 };
 
 export default ProjectCard;
-
-{
-  /* <Card.Content extra>
-  <a href={siteUrl} target="_blank">
-    <Icon name="external alternate" />
-    More Info
-  </a>
-</Card.Content> */
-}
-
-{
-  /* <Button
-    primary
-    content="Learn More"
-    as={Link}
-    to={projectUrl()}
-  ></Button> */
-}
