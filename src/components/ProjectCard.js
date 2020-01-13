@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Card, Icon, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -14,11 +14,14 @@ const ProjectCard = props => {
     switch (props.context) {
       case "pledge":
         return (
-          <Button
-            primary
-            content="Pledge"
-            onClick={() => pickProject(project)}
-          ></Button>
+          <Fragment>
+            <Button
+              primary
+              content="Pledge"
+              onClick={() => pickProject(project)}
+            ></Button>
+            <Button content="Learn More" as={Link} to={projectUrl()}></Button>
+          </Fragment>
         );
       case "index":
         return (

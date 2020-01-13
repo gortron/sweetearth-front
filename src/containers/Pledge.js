@@ -9,7 +9,7 @@ const Pledge = props => {
   const { data, getProjects } = props;
 
   const [project, setProject] = useState(null);
-  const [paid, setPaid] = useState(false);
+  const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
 
   useEffect(() => {
@@ -21,8 +21,9 @@ const Pledge = props => {
     setProject({ project });
   };
 
-  const confirmPayment = async () => {
+  const confirmPayment = async amount => {
     setStatus("paid");
+    setAmount(amount / 100);
   };
 
   return (
@@ -53,12 +54,17 @@ const Pledge = props => {
         </Fragment>
       ) : null}
       {status === "paid" ? (
-        <Header
-          inverted
-          as="h1"
-          content="3. Payment Confirmed."
-          style={{ fontSize: "3em" }}
-        ></Header>
+        <Fragment>
+          <Header
+            inverted
+            as="h1"
+            content="3. Payment Confirmed."
+            style={{ fontSize: "3em" }}
+          ></Header>
+          <p>
+            ${amount} to {project.project.name}
+          </p>
+        </Fragment>
       ) : null}
     </Container>
   );

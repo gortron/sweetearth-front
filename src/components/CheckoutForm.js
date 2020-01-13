@@ -12,7 +12,7 @@ const CheckoutForm = props => {
   };
 
   const handleAmountChange = event => {
-    setAmount(event.target.value);
+    setAmount(event.target.value * 100); // *100 will convert $ to ¢
   };
 
   const submit = async event => {
@@ -31,7 +31,7 @@ const CheckoutForm = props => {
       body: JSON.stringify(body)
     });
 
-    if (response.ok) confirmPayment();
+    if (response.ok) confirmPayment(amount);
   };
 
   return (
