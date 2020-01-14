@@ -35,7 +35,7 @@ const Account = () => {
   return loading || !user ? (
     <div>Loading...</div>
   ) : (
-    <Container className="account">
+    <Container className="page">
       <Header
         inverted
         as="h1"
@@ -48,17 +48,19 @@ const Account = () => {
       </p>
       <br />
       <br />
-      <Header
-        inverted
-        as="h1"
-        content="Your Pledge History"
-        style={{ fontSize: "3em" }}
-      ></Header>
+      <Container className="account">
+        <Header
+          inverted
+          as="h1"
+          content="Your Pledge History"
+          style={{ fontSize: "3em" }}
+        ></Header>
 
-      {renderPledges()}
-      <Button className="logout-button" onClick={() => logout()}>
-        Log out
-      </Button>
+        {renderPledges()}
+        <Button className="logout-button" onClick={() => logout()}>
+          Log out
+        </Button>
+      </Container>
     </Container>
   );
 };

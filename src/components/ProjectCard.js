@@ -3,7 +3,7 @@ import { Card, Icon, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const ProjectCard = props => {
-  const { project, pickProject } = props;
+  const { project, checkoutProject } = props;
   const { name, description, category, imgUrl, siteUrl } = project;
 
   const projectUrl = () => {
@@ -18,7 +18,7 @@ const ProjectCard = props => {
             <Button
               primary
               content="Pledge"
-              onClick={() => pickProject(project)}
+              onClick={() => checkoutProject(project)}
             ></Button>
             <Button content="Learn More" as={Link} to={projectUrl()}></Button>
           </Fragment>

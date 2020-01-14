@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Container, Header } from "semantic-ui-react";
+import { Container, Header, Button } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
 
 import Projects from "./Projects";
@@ -8,23 +8,29 @@ import CheckoutForm from "../components/CheckoutForm";
 const Pledge = props => {
   const { data, getProjects, checkout, checkoutProject } = props;
 
-  const [project, setProject] = useState(null);
+  // const [project, setProject] = useState(null);
   const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
 
   useEffect(() => {
     if (!data) getProjects();
-    if (checkout && !project) pickProject({ ...checkout });
+    if (checkout && status !== "selected") projectSelected({ ...checkout });
   });
 
-  const pickProject = project => {
+  const projectSelected = project => {
     setStatus("selected");
-    setProject({ project });
+    checkoutProject({ ...project });
   };
 
   const confirmPayment = async amount => {
     setStatus("paid");
     setAmount(amount / 100);
+  };
+
+  const cancelPledge = () => {
+    console.log("pledge cancelled");
+    checkoutProject(null);
+    setStatus("unselected");
   };
 
   return (
@@ -34,7 +40,7 @@ const Pledge = props => {
           data={data}
           getProjects={getProjects}
           context="pledge"
-          pickProject={pickProject}
+          checkoutProject={checkoutProject}
         />
       ) : null}
       {status === "selected" ? (
@@ -45,11 +51,18 @@ const Pledge = props => {
             content="2. Billing Information"
             style={{ fontSize: "3em" }}
           ></Header>
-          <h3>{project.project.name}</h3>
+          <h3>{checkout.name}</h3>
+          <Button
+            negative
+            icon="cancel"
+            size="mini"
+            content="Cancel"
+            onClick={() => cancelPledge()}
+          ></Button>
           <Elements>
             <CheckoutForm
               confirmPayment={confirmPayment}
-              project={{ ...project }}
+              project={{ ...checkout }}
             />
           </Elements>
         </Fragment>
@@ -63,7 +76,7 @@ const Pledge = props => {
             style={{ fontSize: "3em" }}
           ></Header>
           <p>
-            ${amount} to {project.project.name}
+            ${amount} to {checkout.name}
           </p>
         </Fragment>
       ) : null}

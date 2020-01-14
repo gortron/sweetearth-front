@@ -3,7 +3,7 @@ import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
 const Projects = props => {
-  const { context, data, getProjects, pickProject } = props;
+  const { context, data, getProjects, checkoutProject } = props;
 
   useEffect(() => {
     if (!data) getProjects();
@@ -38,7 +38,7 @@ const Projects = props => {
                 key={idx}
                 project={project.attributes}
                 context={context}
-                pickProject={pickProject}
+                checkoutProject={checkoutProject}
               ></ProjectCard>
             );
           })

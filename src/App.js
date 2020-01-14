@@ -23,7 +23,8 @@ const App = () => {
   });
 
   const checkoutProject = project => {
-    setCheckout({ ...project });
+    console.log("project checked out");
+    project ? setCheckout({ ...project }) : setCheckout(null);
   };
 
   const getProjects = async () => {

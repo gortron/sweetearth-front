@@ -69,7 +69,12 @@ const CheckoutForm = props => {
         />
       </Container>
 
-      <Button onClick={submit}>Purchase</Button>
+      <Button
+        positive
+        icon="checkmark"
+        content="Complete Pledge"
+        onClick={submit}
+      ></Button>
     </div>
   );
 };

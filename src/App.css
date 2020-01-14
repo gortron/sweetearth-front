@@ -131,6 +131,13 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
   background-color: white;
 }
 
+.ui.container.page {
+  padding-top: 5%;
+}
+
+.ui.container.index {
+  padding-top: 5%;
+}
 .ui.container .about-container {
   display: flex;
   flex-wrap: wrap;
@@ -145,24 +152,22 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
   margin: 2em;
 }
 
-.ui.container .page {
-  padding-top: 5%;
+.ui.container .account {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: space-between;
 }
 
-.ui.container.account {
-  padding-top: 5%;
-  height: 90%;
+.ui.container .account * {
+  flex: 1;
 }
 
-.ui.container.account.user-pledges {
+.ui.container .account .user-pledges {
   align-self: flex-start;
   font-size: 1.33em;
 }
 
-.ui.container.account.logout-button {
-  align-self: flex-end;
-}
-
-.ui.container .index {
-  padding-top: 5%;
+.ui.container .account .logout-button {
+  align-self: center;
 }
