@@ -23,7 +23,6 @@ const Projects = props => {
   return (
     <Container className={context}>
       <Header
-        inverted
         as="h1"
         content={handleTitle()}
         style={{ fontSize: "3em" }}

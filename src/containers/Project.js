@@ -34,7 +34,6 @@ const Project = props => {
     ) : (
       <Container fluid className="page">
         <Header
-          inverted
           as="h1"
           content={project.name}
           style={{ fontSize: "3em" }}

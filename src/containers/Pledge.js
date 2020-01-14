@@ -46,7 +46,6 @@ const Pledge = props => {
       {status === "selected" ? (
         <Fragment>
           <Header
-            inverted
             as="h1"
             content="2. Billing Information"
             style={{ fontSize: "3em" }}
@@ -70,7 +69,6 @@ const Pledge = props => {
       {status === "paid" ? (
         <Fragment>
           <Header
-            inverted
             as="h1"
             content="3. Payment Confirmed."
             style={{ fontSize: "3em" }}
