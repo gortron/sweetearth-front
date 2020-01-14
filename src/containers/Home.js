@@ -26,34 +26,64 @@ const Home = () => {
           content="sweetearth makes it easy to give."
           style={{ fontSize: "2em" }}
         ></Header>
-        <Container className="overview-element">
+        <div className="overview-element">
           <Header
             as="h3"
-            content="Purpose"
+            content="⚡️ Quick"
             style={{ fontSize: "2em" }}
           ></Header>
           <p>
-            The constraint of sweetearth is this: make a contribution to an
-            accredited ecological project in as few clicks as possible. You can
-            do so in 3 clicks, in fact. I hope the tool is easy enough to use
-            that you feel more encouraged to help tend to our sweetearth by
-            pledging contributions for impactful projects.
+            You can make a meaningful contribution in 3 clicks. And we're
+            working on getting it down to one.
           </p>
-        </Container>
-        <Container className="overview-element">
+          <Button
+            size="mini"
+            content="Pledge Now"
+            as={Link}
+            to="/pledge"
+          ></Button>
+        </div>
+        <div className="overview-element">
           <Header
             as="h3"
-            content="Purpose"
+            content="💎 Curated"
             style={{ fontSize: "2em" }}
           ></Header>
           <p>
-            The constraint of sweetearth is this: make a contribution to an
-            accredited ecological project in as few clicks as possible. You can
-            do so in 3 clicks, in fact. I hope the tool is easy enough to use
-            that you feel more encouraged to help tend to our sweetearth by
-            pledging contributions for impactful projects.
+            The projects featured on sweetearth have been curated for their
+            ecological impact, GoldStandard / Verified Carbon Standard, and
+            alignment with DrawDown.
           </p>
-        </Container>
+          <Button
+            size="mini"
+            content="See Projects"
+            as={Link}
+            to="/projects"
+          ></Button>
+        </div>
+        <div className="overview-element">
+          <Header
+            as="h3"
+            content="🔐 Secure"
+            style={{ fontSize: "2em" }}
+          ></Header>
+          <p>
+            sweetearth doesn't hold on to your payment information, and payments
+            are handled by Stripe, an industry standard.
+          </p>
+        </div>
+        <div className="overview-element">
+          <Header
+            as="h3"
+            content="💭 Purpose"
+            style={{ fontSize: "2em" }}
+          ></Header>
+          <p>
+            The goal of this site is to make it as easy as possible to
+            contribute to projects that are making a meaningful impact for our
+            sweet earth.
+          </p>
+        </div>
       </Container>
     </Container>
   );
