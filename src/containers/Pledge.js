@@ -6,7 +6,7 @@ import Projects from "./Projects";
 import CheckoutForm from "../components/CheckoutForm";
 
 const Pledge = props => {
-  const { data, getProjects } = props;
+  const { data, getProjects, checkout, checkoutProject } = props;
 
   const [project, setProject] = useState(null);
   const [amount, setAmount] = useState(0);
@@ -14,6 +14,7 @@ const Pledge = props => {
 
   useEffect(() => {
     if (!data) getProjects();
+    if (checkout && !project) pickProject({ ...checkout });
   });
 
   const pickProject = project => {

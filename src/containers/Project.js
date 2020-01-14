@@ -4,7 +4,7 @@ import ProjectCard from "../components/ProjectCard";
 import { Link } from "react-router-dom";
 
 const Project = props => {
-  const { data, getProjects } = props;
+  const { data, getProjects, checkoutProject } = props;
 
   const [project, setProject] = useState(null);
 
@@ -15,6 +15,7 @@ const Project = props => {
 
   const findProject = () => {
     // This function converts pathname to project.name, then filters that project from data.
+    // let projectName = this.props.match.params
     let projectPath = window.location.pathname.split("/").slice(-1)[0];
     let projectName = projectPath.split("-").join(" ");
     let capitalizedProjectName = projectName.replace(/\b\w/g, l =>
@@ -53,8 +54,9 @@ const Project = props => {
           primary
           size="huge"
           content="Pledge Today"
+          onClick={() => checkoutProject(project)}
           as={Link}
-          to="/pledge"
+          to={`/pledge`}
         ></Button>
       </Container>
     );
@@ -64,3 +66,14 @@ const Project = props => {
 };
 
 export default Project;
+
+{
+  /* <Button
+          primary
+          size="huge"
+          content="Pledge Today"
+          onClick={() => redirect("/pledge")}
+          {/* as={Link}
+          to="/pledge" 
+        ></Button> */
+}

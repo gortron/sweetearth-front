@@ -145,10 +145,24 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
   margin: 2em;
 }
 
-.ui.container.page {
+.ui.container .page {
   padding-top: 5%;
 }
 
-.ui.container.index {
+.ui.container.account {
+  padding-top: 5%;
+  height: 90%;
+}
+
+.ui.container.account.user-pledges {
+  align-self: flex-start;
+  font-size: 1.33em;
+}
+
+.ui.container.account.logout-button {
+  align-self: flex-end;
+}
+
+.ui.container .index {
   padding-top: 5%;
 }

@@ -16,10 +16,15 @@ import history from "./utils/history";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
+  const [checkout, setCheckout] = useState(null);
 
   useEffect(() => {
     if (projects.length === 0) getProjects();
   });
+
+  const checkoutProject = project => {
+    setCheckout({ ...project });
+  };
 
   const getProjects = async () => {
     const endpoint = `http://localhost:3000/projects`;
@@ -50,13 +55,22 @@ const App = () => {
               <Route
                 path="/projects/:name"
                 render={props => (
-                  <Project {...projects} getProjects={getProjects} />
+                  <Project
+                    {...projects}
+                    getProjects={getProjects}
+                    checkoutProject={checkoutProject}
+                  />
                 )}
               />
               <Route
                 path="/pledge"
                 render={props => (
-                  <Pledge {...projects} getProjects={getProjects} />
+                  <Pledge
+                    {...projects}
+                    getProjects={getProjects}
+                    checkout={checkout}
+                    checkoutProject={checkoutProject}
+                  />
                 )}
               />
               <Route path="/about" component={About} />

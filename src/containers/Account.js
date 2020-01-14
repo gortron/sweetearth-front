@@ -19,31 +19,46 @@ const Account = () => {
   };
 
   const renderPledges = () => {
-    debugger;
     if (userData) {
-      const pledges = userData.included[0];
-      return pledges.map(pledge => {
-        return renderPledge(pledge);
+      return userData.pledges.map((pledge, idx) => {
+        return (
+          <div key={idx} className="user-pledges">
+            <Header inverted>
+              ${pledge.amount / 100} for {pledge.project.name}
+            </Header>
+          </div>
+        );
       });
     }
-  };
-
-  const renderPledge = pledge => {
-    return <p>pledge.amount</p>;
   };
 
   return loading || !user ? (
     <div>Loading...</div>
   ) : (
-    <Container className="page">
+    <Container className="account">
       <Header
         inverted
         as="h1"
         content="Your Account"
         style={{ fontSize: "3em" }}
       ></Header>
+      <p style={{ fontSize: "1.33em" }}>
+        This is your account page. Here, you can see a history of your pledges,
+        or log out.
+      </p>
+      <br />
+      <br />
+      <Header
+        inverted
+        as="h1"
+        content="Your Pledge History"
+        style={{ fontSize: "3em" }}
+      ></Header>
+
       {renderPledges()}
-      <Button onClick={() => logout()}>Log out</Button>
+      <Button className="logout-button" onClick={() => logout()}>
+        Log out
+      </Button>
     </Container>
   );
 };
