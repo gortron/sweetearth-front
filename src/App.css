@@ -2,6 +2,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: grayscale;
+  background-color: #f4f5f7;
 }
 
 @media only screen and (min-width: 768px) {
@@ -51,7 +52,7 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
 
 .ui.inverted.vertical.segment {
   height: 100vh;
-  background-color: rgb(255, 255, 255);
+  background-color: #f4f5f7;
 }
 
 /* .ui.content.container {
@@ -92,11 +93,25 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
 }
 
 /* Attempt to style Stripe fields */
-.stripe-element * {
-  background-color: white;
-  border-color: #85b7d9;
-  border-width: 1px;
-  font-size: 16px;
+/* .StripeElement * {
+  border: 1px solid #85b7d9;
+  border-radius: 5px;
+} */
+
+.card-form .div {
+  display: inline-block !important;
+  border: 1px solid #85b7d9;
+}
+
+.StripeElement {
+  /* display: block; */
+  /* display: inline-block; */
+  border: 1px solid #85b7d9;
+  border-radius: 5px;
+  /* margin: 10px 0 20px 0; */
+  /* max-width: 500px; */
+  padding: 10px 14px;
+  background: white;
 }
 
 .ui.page.container {
@@ -189,7 +204,7 @@ nav.ui.container .ui.inverted.compact.menu .active.item {
 }
 
 .ui.container .checkout-form {
-  height: 30vh;
+  height: 35vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

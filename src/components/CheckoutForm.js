@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import { Button, Input, Container, Header } from "semantic-ui-react";
+import { Button, Input, Container, Header, Label } from "semantic-ui-react";
 
 const CheckoutForm = props => {
   const { project, confirmPayment, stripe, cancelPledge } = props;
@@ -54,9 +54,14 @@ const CheckoutForm = props => {
         onChange={handleEmailChange}
       />
       <Input focus label="Confirm Email*" placeholder="Email" />
-      <Container className="stripe-element">
-        <CardElement />
-      </Container>
+      <div className="card-form">
+        <div>
+          <Label size="big">Payment Card</Label>
+        </div>
+        <div>
+          <CardElement />
+        </div>
+      </div>
       <Button.Group>
         <Button
           positive
@@ -78,22 +83,25 @@ const CheckoutForm = props => {
 
 export default injectStripe(CheckoutForm);
 
-{
-  /* <div>
-        <Button
-          positive
-          icon="checkmark"
-          content="Complete Pledge"
-          onClick={submit}
-        ></Button>
-      </div>
-      <div>
-        <Button
-          negative
-          icon="cancel"
-          size="mini"
-          content="Cancel"
-          onClick={() => cancelPledge()}
-        ></Button>
-      </div> */
-}
+// style={{
+//   base: {
+//     backgroundColor: "white",
+//     padding: "20px",
+//     icon_color: "#E0E1E2",
+//     color: "#3A3A3A",
+//     fontWeight: 500,
+//     fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+//     fontSize: "16px",
+//     fontSmoothing: "antialiased",
+//     ":-webkit-autofill": {
+//       color: "#3A3A3A"
+//     },
+//     "::placeholder": {
+//       color: "#A1A1A1"
+//     }
+//   },
+//   invalid: {
+//     iconColor: "#FFC7EE",
+//     color: "#FFC7EE"
+//   }
+// }}

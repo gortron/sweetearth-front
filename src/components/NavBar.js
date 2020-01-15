@@ -58,7 +58,7 @@ const NavBar = () => {
           </Menu.Item>
         ) : (
           <Menu.Item position="right">
-            <Button primary onClick={() => handleAuth()}>
+            <Button secondary onClick={() => handleAuth()}>
               Sign Up / Log In
             </Button>
           </Menu.Item>

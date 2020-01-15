@@ -13,7 +13,7 @@ const Home = props => {
           style={{ fontSize: "3em" }}
         ></Header>
         <Button
-          primary
+          positive
           size="huge"
           content="Pledge Today"
           as={Link}
