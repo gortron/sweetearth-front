@@ -23,7 +23,7 @@ const Account = () => {
       return userData.pledges.map((pledge, idx) => {
         return (
           <div key={idx} className="user-pledges">
-            <Header inverted>
+            <Header>
               ${pledge.amount / 100} for {pledge.project.name}
             </Header>
           </div>
@@ -37,7 +37,6 @@ const Account = () => {
   ) : (
     <Container className="page">
       <Header
-        inverted
         as="h1"
         content="Your Account"
         style={{ fontSize: "3em" }}
@@ -50,7 +49,6 @@ const Account = () => {
       <br />
       <Container className="account">
         <Header
-          inverted
           as="h1"
           content="Your Pledge History"
           style={{ fontSize: "3em" }}

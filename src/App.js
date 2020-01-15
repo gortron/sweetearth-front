@@ -23,7 +23,6 @@ const App = () => {
   });
 
   const checkoutProject = project => {
-    console.log("project checked out");
     project ? setCheckout({ ...project }) : setCheckout(null);
   };
 

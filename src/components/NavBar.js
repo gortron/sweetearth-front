@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "../react-auth0";
 import { Dropdown, Segment, Button, Menu, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
@@ -9,10 +9,9 @@ const NavBar = () => {
     loginWithRedirect,
     logout,
     loading,
-    user
+    user,
+    renewToken
   } = useAuth0();
-
-  //  $r.hooks[0].subHooks[0].value to investigate user or isAuthenticated
 
   const handleAuth = async () => {
     await loginWithRedirect({});
@@ -24,24 +23,24 @@ const NavBar = () => {
       });
   };
 
-  const saveOrCreateUser = async () => {
-    await fetch("http://localhost:3000/users/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user)
-    });
-  };
+  // const saveOrCreateUser = async () => {
+  //   await fetch("http://localhost:3000/users/create", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(user)
+  //   });
+  // };
 
   return (
     <Container as="nav">
       <Menu borderless inverted fixed="top" size="large" stackable>
-        <Menu.Item position="left">
+        <Menu.Item>
           <img
             src="https://image.flaticon.com/icons/svg/2439/2439044.svg"
             alt="icon"
           />
         </Menu.Item>
-        <Menu.Item header as={Link} to="/">
+        <Menu.Item header as={Link} to="/" position="left">
           sweetearth
         </Menu.Item>
         <Menu.Item as={Link} to="/about">
@@ -53,9 +52,9 @@ const NavBar = () => {
         <Menu.Item as={Link} to="/pledge">
           Pledge
         </Menu.Item>
-        {user ? (
+        {isAuthenticated ? (
           <Menu.Item as={Link} to="/account" position="right">
-            🌱 {user.email}
+            Account
           </Menu.Item>
         ) : (
           <Menu.Item position="right">

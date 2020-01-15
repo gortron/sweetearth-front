@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import { Button, Input, Container } from "semantic-ui-react";
+import { Button, Input, Container, Header } from "semantic-ui-react";
 
 const CheckoutForm = props => {
-  const { project, confirmPayment, stripe } = props;
+  const { project, confirmPayment, stripe, cancelPledge } = props;
   const [amount, setAmount] = useState(0);
   const [email, setEmail] = useState("");
 
@@ -23,7 +23,7 @@ const CheckoutForm = props => {
       stripe_token: token.id,
       user_email: email,
       amount: amount,
-      project_name: project.project.name
+      project_name: project.name
     };
     let response = await fetch("http://localhost:3000/charge", {
       method: "POST",
@@ -35,14 +35,18 @@ const CheckoutForm = props => {
   };
 
   return (
-    <div className="checkout">
-      <Input
-        focus
-        label="Pledge Amount ($)*"
-        placeholder="10"
-        onChange={handleAmountChange}
-      />
-      <br />
+    <Container className="checkout-form">
+      <div>
+        <Header as="h3" style={{ fontSize: "2em" }}>
+          Pledging to: {project.name}
+        </Header>
+        <Input
+          focus
+          label="Pledge Amount ($)*"
+          placeholder="10"
+          onChange={handleAmountChange}
+        />
+      </div>
       <Input
         focus
         label="Email*"
@@ -50,33 +54,46 @@ const CheckoutForm = props => {
         onChange={handleEmailChange}
       />
       <Input focus label="Confirm Email*" placeholder="Email" />
-      <Container className="StripeElement">
-        <CardElement
-          style={{
-            base: {
-              fontSize: "16px",
-              color: "#424770",
-              fontFamily: "Open Sans, sans-serif",
-              letterSpacing: "0.025em",
-              "::placeholder": {
-                color: "#aab7c4"
-              }
-            },
-            invalid: {
-              color: "#c23d4b"
-            }
-          }}
-        />
+      <Container className="stripe-element">
+        <CardElement />
       </Container>
-
-      <Button
-        positive
-        icon="checkmark"
-        content="Complete Pledge"
-        onClick={submit}
-      ></Button>
-    </div>
+      <Button.Group>
+        <Button
+          positive
+          icon="checkmark"
+          content="Complete Pledge"
+          onClick={submit}
+        ></Button>
+        <Button.Or />
+        <Button
+          icon="cancel"
+          size="mini"
+          content="Cancel"
+          onClick={() => cancelPledge()}
+        ></Button>
+      </Button.Group>
+    </Container>
   );
 };
 
 export default injectStripe(CheckoutForm);
+
+{
+  /* <div>
+        <Button
+          positive
+          icon="checkmark"
+          content="Complete Pledge"
+          onClick={submit}
+        ></Button>
+      </div>
+      <div>
+        <Button
+          negative
+          icon="cancel"
+          size="mini"
+          content="Cancel"
+          onClick={() => cancelPledge()}
+        ></Button>
+      </div> */
+}

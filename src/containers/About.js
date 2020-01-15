@@ -30,7 +30,7 @@ const About = () => {
         <div className="about-container-element">
           <Header
             as="h3"
-            content="Purpose"
+            content="💭 Purpose"
             style={{ fontSize: "2em" }}
           ></Header>
           <p>
@@ -44,7 +44,7 @@ const About = () => {
         <div className="about-container-element">
           <Header
             as="h3"
-            content="Principles"
+            content="🔖 Principles"
             style={{ fontSize: "2em" }}
           ></Header>
           <p>
@@ -57,7 +57,11 @@ const About = () => {
           </p>
         </div>
         <div className="about-container-element">
-          <Header as="h3" content="Simple" style={{ fontSize: "2em" }}></Header>
+          <Header
+            as="h3"
+            content="🏝 Simple"
+            style={{ fontSize: "2em" }}
+          ></Header>
           <p>
             There isn't much you can do on this site besides learn about the
             projects I've selected and make contributions to them. But, I
@@ -69,7 +73,7 @@ const About = () => {
         <div className="about-container-element">
           <Header
             as="h3"
-            content="Growing"
+            content="🌱 Growing"
             style={{ fontSize: "2em" }}
           ></Header>
           <p>

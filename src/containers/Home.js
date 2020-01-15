@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Fragment, useEffect } from "react";
 import { Segment, Container, Header, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = props => {
   return (
     <Container fluid className="home">
       <Container fluid className="hero">
@@ -34,7 +34,8 @@ const Home = () => {
           ></Header>
           <p>
             You can make a meaningful contribution in 3 clicks. And we're
-            working on getting it down to one.
+            working on getting it down to one. Pledge now to see which projects
+            you can contribute to today.
           </p>
           <Button
             size="mini"
@@ -51,8 +52,7 @@ const Home = () => {
           ></Header>
           <p>
             The projects featured on sweetearth have been curated for their
-            ecological impact, GoldStandard / Verified Carbon Standard, and
-            alignment with DrawDown.
+            ecological impact, certification, and alignment with DrawDown.
           </p>
           <Button
             size="mini"

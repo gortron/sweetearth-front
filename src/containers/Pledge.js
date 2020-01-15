@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Container, Header, Button } from "semantic-ui-react";
+import { Container, Header, Button, Image } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
 
 import Projects from "./Projects";
@@ -14,7 +14,7 @@ const Pledge = props => {
 
   useEffect(() => {
     if (!data) getProjects();
-    if (checkout && status !== "selected") projectSelected({ ...checkout });
+    if (checkout && status === "unselected") projectSelected({ ...checkout });
   });
 
   const projectSelected = project => {
@@ -22,13 +22,12 @@ const Pledge = props => {
     checkoutProject({ ...project });
   };
 
-  const confirmPayment = async amount => {
+  const confirmPayment = amount => {
     setStatus("paid");
     setAmount(amount / 100);
   };
 
   const cancelPledge = () => {
-    console.log("pledge cancelled");
     checkoutProject(null);
     setStatus("unselected");
   };
@@ -44,27 +43,21 @@ const Pledge = props => {
         />
       ) : null}
       {status === "selected" ? (
-        <Fragment>
+        <Container className="pledge-checkout">
           <Header
             as="h1"
             content="2. Billing Information"
             style={{ fontSize: "3em" }}
           ></Header>
-          <h3>{checkout.name}</h3>
-          <Button
-            negative
-            icon="cancel"
-            size="mini"
-            content="Cancel"
-            onClick={() => cancelPledge()}
-          ></Button>
+          <Image src={checkout.imgUrl} style={{ width: "50%" }}></Image>
           <Elements>
             <CheckoutForm
               confirmPayment={confirmPayment}
               project={{ ...checkout }}
+              cancelPledge={cancelPledge}
             />
           </Elements>
-        </Fragment>
+        </Container>
       ) : null}
       {status === "paid" ? (
         <Fragment>
