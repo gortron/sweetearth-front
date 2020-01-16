@@ -14,8 +14,6 @@ const Projects = props => {
     if (context === "index") {
       title =
         "These projects are curated for their ecological and societal impact.";
-    } else {
-      title = "1. Pick a Project";
     }
     return title;
   };

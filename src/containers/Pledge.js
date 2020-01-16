@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Container, Header, Step, Image } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
+import "@lottiefiles/lottie-player";
 
 import Projects from "./Projects";
 import CheckoutForm from "../components/CheckoutForm";
@@ -53,7 +54,7 @@ const Pledge = props => {
             <Step>
               <Step.Content>
                 <Step.Title>Pledge Confirmed</Step.Title>
-                <Step.Description>❤ Thanks </Step.Description>
+                <Step.Description>❤️ Thanks </Step.Description>
               </Step.Content>
             </Step>
           </Step.Group>
@@ -78,7 +79,7 @@ const Pledge = props => {
             <Step>
               <Step.Content>
                 <Step.Title>Pledge Confirmed</Step.Title>
-                <Step.Description>❤ Thanks </Step.Description>
+                <Step.Description>❤️ Thanks </Step.Description>
               </Step.Content>
             </Step>
           </Step.Group>
@@ -103,7 +104,7 @@ const Pledge = props => {
             <Step>
               <Step.Content active>
                 <Step.Title>Pledge Confirmed</Step.Title>
-                <Step.Description>❤ Thanks </Step.Description>
+                <Step.Description>❤️ Thanks </Step.Description>
               </Step.Content>
             </Step>
           </Step.Group>
@@ -126,11 +127,6 @@ const Pledge = props => {
       ) : null}
       {status === "selected" ? (
         <Container className="pledge-checkout">
-          <Header
-            as="h1"
-            content="2. Billing Information"
-            style={{ fontSize: "3em" }}
-          ></Header>
           <Image rounded src={checkout.imgUrl} style={{ width: "50%" }}></Image>
           <Elements>
             <CheckoutForm
@@ -145,11 +141,30 @@ const Pledge = props => {
         <Fragment>
           <Header
             as="h1"
-            content="3. Payment Confirmed."
+            content="Your pledge has been confirmed. Way to go!"
             style={{ fontSize: "3em" }}
           ></Header>
           <p>
-            ${amount} to {checkout.name}
+            You gave ${amount} to {checkout.name}. We've sent you an email with
+            a confirmation number.
+          </p>
+          <Container>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player
+              src="https://assets8.lottiefiles.com/animated_stickers/lf_tgs_8W1fY7.json"
+              mode="bounce"
+              background="transparent"
+              speed=".75"
+              style={{ width: "400px", height: "400px" }}
+              loop
+              autoplay
+            ></lottie-player>
+          </Container>
+          <p>
+            Spring is passing.
+            <br />
+            The birds cry, and the fishes’ eyes are <br />
+            With tears.
           </p>
         </Fragment>
       ) : null}
