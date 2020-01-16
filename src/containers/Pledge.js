@@ -139,15 +139,17 @@ const Pledge = props => {
       ) : null}
       {status === "paid" ? (
         <Fragment>
-          <Header
-            as="h1"
-            content="Your pledge has been confirmed. Way to go!"
-            style={{ fontSize: "3em" }}
-          ></Header>
-          <p>
-            You gave ${amount} to {checkout.name}. We've sent you an email with
-            a confirmation number.
-          </p>
+          <Header style={{ fontSize: "2em" }}>
+            You did it! Here's a haiku, as a treat:
+          </Header>
+          <Header style={{ fontSize: "1.33em" }}>
+            <i>
+              Spring is passing.
+              <br />
+              The birds cry, and the fishes’ eyes are <br />
+              With tears. - Basho
+            </i>
+          </Header>
           <Container>
             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
             <lottie-player
@@ -161,10 +163,8 @@ const Pledge = props => {
             ></lottie-player>
           </Container>
           <p>
-            Spring is passing.
-            <br />
-            The birds cry, and the fishes’ eyes are <br />
-            With tears.
+            Your pledge has been confirmed. You gave ${amount} to{" "}
+            {checkout.name}. We've sent you an email with a confirmation number.
           </p>
         </Fragment>
       ) : null}
