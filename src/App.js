@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
+import ResponsiveNav from "./components/ResponsiveNav";
 import Footer from "./components/Footer.js";
 import PrivateRoute from "./components/PrivateRoute.js";
 import Home from "./containers/Home";
@@ -17,6 +18,20 @@ import history from "./utils/history";
 const App = () => {
   const [projects, setProjects] = useState([]);
   const [checkout, setCheckout] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [mobile, setMobile] = useState(false);
+
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+    windowWidth < 780 ? setMobile(true) : setMobile(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
 
   useEffect(() => {
     if (projects.length === 0) getProjects();
@@ -32,13 +47,15 @@ const App = () => {
     const data = await response.json();
     setProjects(data);
   };
-
+  {
+    /* <NavBar mobile={mobile} /> */
+  }
   return (
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
       <Router history={history}>
         <div className="App">
           <Segment vertical>
-            <NavBar />
+            <NavBar mobile={mobile} />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route
@@ -50,7 +67,7 @@ const App = () => {
                     getProjects={getProjects}
                     context="index"
                   />
-                )} // this seems to overwrite any other props being passed
+                )}
               />
               <Route
                 path="/projects/:name"
@@ -85,7 +102,3 @@ const App = () => {
 };
 
 export default App;
-
-{
-  /* <Route path="/account" component={Account} /> */
-}

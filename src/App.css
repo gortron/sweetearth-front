@@ -9,7 +9,19 @@ body {
   color: black;
 }
 
+.ui.segment {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+  background-color: #fffcf9;
+}
+
 .ui.menu {
+  background-color: #758e4f;
+}
+
+.ui.dropdown {
   background-color: #758e4f;
 }
 
@@ -23,14 +35,6 @@ body {
 
 .ui.button.primary {
   background-color: #f4c366 !important;
-}
-
-.ui.segment {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  height: 100vh;
-  background-color: #fffcf9;
 }
 
 /* .ui.inverted.vertical.segment {
