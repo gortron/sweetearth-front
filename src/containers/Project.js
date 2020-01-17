@@ -33,15 +33,25 @@ const Project = props => {
       <p>Loading...</p>
     ) : (
       <Container fluid className="page">
-        <Header
-          as="h1"
-          content={project.name}
-          style={{ fontSize: "3em" }}
-        ></Header>
-        <p>
-          <i>{project.description}</i>
-        </p>
-        <Image fluid src={project.imgUrl}></Image>
+        <Container
+          fluid
+          className="hero"
+          style={{
+            background: `url(http://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Afognak_coastline.jpg/1280px-Afognak_coastline.jpg) no-repeat left top`,
+            backgroundSize: "cover"
+          }}
+        >
+          <Header
+            inverted
+            as="h1"
+            content={project.name}
+            style={{ fontSize: "3em" }}
+          ></Header>
+          <p style={{ color: "white", fontSize: "1.33em" }}>
+            <i>{project.description}</i>
+          </p>
+        </Container>
+
         <Container className="project-content">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -9,7 +9,7 @@ import Pledge from "./containers/Pledge";
 import About from "./containers/About";
 import Account from "./containers/Account";
 import { StripeProvider } from "react-stripe-elements";
-import { Segment } from "semantic-ui-react";
+import { Segment, Container } from "semantic-ui-react";
 import "./App.css";
 import { Router, Route, Switch } from "react-router-dom";
 import history from "./utils/history";
@@ -37,7 +37,7 @@ const App = () => {
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
       <Router history={history}>
         <div className="App">
-          <Segment inverted vertical textAlign="center">
+          <Segment vertical>
             <NavBar />
             <Switch>
               <Route exact path="/" component={Home} />

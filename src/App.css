@@ -25,36 +25,70 @@ body {
   background-color: #f4c366 !important;
 }
 
-.ui.inverted.vertical.segment {
+.ui.segment {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   height: 100vh;
   background-color: #fffcf9;
 }
 
+/* .ui.inverted.vertical.segment {
+  height: 100vh;
+  background-color: #fffcf9;
+} */
+
+/* .ui.container.nav {
+} */
+
 .ui.page.container {
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding-top: 70px;
+  padding-bottom: 55px;
 }
 
 .ui.index.container {
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding-top: 70px;
 }
 
 .ui.home.container {
-  padding-top: 4%;
+  /* padding-top: 4%; */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  /* justify-content: flex-start;
   align-items: flex-start;
-  align-content: flex-start;
+  align-content: flex-start;  */
 }
 
-.ui.hero {
-  padding-top: 18%;
+.ui.about-container {
+  padding-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.ui.container .about-container .about-container-element {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin: 2em;
+}
+
+.ui.home-hero {
+  padding-top: 160px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   height: 50vh;
   background: url(https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
     no-repeat left top;
   background-size: cover;
+}
+
+.ui.hero {
+  padding-top: 160px;
+  height: 50vh;
 }
 
 .ui.container .overview {
@@ -99,21 +133,6 @@ body {
   /* max-width: 500px; */
   padding: 10px 14px;
   background: white;
-}
-
-.ui.container .about-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  text-align: left;
-}
-
-.ui.container .about-container .about-container-element {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
-  margin: 2em;
 }
 
 .ui.container .account {

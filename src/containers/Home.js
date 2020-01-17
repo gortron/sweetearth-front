@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 const Home = props => {
   return (
     <Container fluid className="home">
-      <Container fluid className="hero">
+      <Container fluid className="home-hero">
         <Header
           inverted
           as="h1"
           content="Give back to our sweet earth."
-          style={{ fontSize: "3em" }}
+          style={{
+            fontSize: "3em"
+          }}
         ></Header>
         <Button
           primary

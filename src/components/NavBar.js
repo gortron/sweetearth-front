@@ -32,7 +32,7 @@ const NavBar = () => {
   // };
 
   return (
-    <Container as="nav">
+    <Container className="nav">
       <Menu borderless fixed="top" size="large" stackable>
         <Menu.Item>
           <img
