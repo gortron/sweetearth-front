@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
-import ResponsiveNav from "./components/ResponsiveNav";
 import Footer from "./components/Footer.js";
 import PrivateRoute from "./components/PrivateRoute.js";
 import Home from "./containers/Home";
@@ -93,7 +92,7 @@ const App = () => {
               <Route path="/about" component={About} />
               <PrivateRoute path="/account" component={Account} />
             </Switch>
-            <Footer />
+            <Footer mobile={mobile} />
           </Segment>
         </div>
       </Router>

@@ -29,6 +29,10 @@ body {
   color: #fffcf9 !important;
 }
 
+.ui.footer {
+  justify-content: center;
+}
+
 .ui.button.positive {
   background-color: #95d6c5 !important;
 }

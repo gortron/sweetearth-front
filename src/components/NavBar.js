@@ -103,11 +103,7 @@ const NavBar = props => {
     );
   };
 
-  const renderMenus = () => {
-    return mobile ? renderMobile() : renderDesktop();
-  };
-
-  return renderMenus();
+  return mobile ? renderMobile() : renderDesktop();
 };
 
 export default NavBar;
