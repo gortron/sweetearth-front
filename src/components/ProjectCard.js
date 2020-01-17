@@ -25,12 +25,7 @@ const ProjectCard = props => {
         );
       case "index":
         return (
-          <Button
-            primary
-            content="Learn More"
-            as={Link}
-            to={projectUrl()}
-          ></Button>
+          <Button content="Learn More" as={Link} to={projectUrl()}></Button>
         );
       default:
         return <p>Loading...</p>;

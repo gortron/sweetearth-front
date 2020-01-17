@@ -59,21 +59,20 @@ const About = () => {
         <div className="about-container-element">
           <Header
             as="h3"
-            content="🏝 Simple"
+            content="📚 Learn"
             style={{ fontSize: "2em" }}
           ></Header>
           <p>
-            There isn't much you can do on this site besides learn about the
-            projects I've selected and make contributions to them. But, I
-            encourage you to look into the work others are doing in this area.
-            Our stewardship of our home, our sweetearth, is one of the great
-            engineering and humanitarian challenges of our time.
+            Building sweetearth was a way for me to learn more not just about
+            software development, but about our ecosystem and how to be tender
+            with it. Our stewardship of our home, our sweetearth, is one of the
+            great engineering and humanitarian missions of our time.
           </p>
         </div>
         <div className="about-container-element">
           <Header
             as="h3"
-            content="🌱 Growing"
+            content="🌱 Grow"
             style={{ fontSize: "2em" }}
           ></Header>
           <p>

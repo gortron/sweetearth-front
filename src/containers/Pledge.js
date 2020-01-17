@@ -36,8 +36,8 @@ const Pledge = props => {
     switch (status) {
       case "unselected":
         return (
-          <Step.Group ordered stackable>
-            <Step active>
+          <Step.Group>
+            <Step>
               <Step.Content>
                 <Step.Title>Pick Project</Step.Title>
                 <Step.Description>
@@ -53,21 +53,19 @@ const Pledge = props => {
             </Step>
             <Step>
               <Step.Content>
-                <Step.Title>Pledge Confirmed</Step.Title>
-                <Step.Description>❤️ Thanks </Step.Description>
+                <Step.Title>Pledge Confirmation</Step.Title>
+                <Step.Description> Thanks </Step.Description>
               </Step.Content>
             </Step>
           </Step.Group>
         );
       case "selected":
         return (
-          <Step.Group ordered stackable>
-            <Step completed>
+          <Step.Group>
+            <Step>
               <Step.Content>
-                <Step.Title>Pick Project</Step.Title>
-                <Step.Description>
-                  Choose a project to pledge to
-                </Step.Description>
+                <Step.Title>🌱</Step.Title>
+                <Step.Description>✅ Project Selected</Step.Description>
               </Step.Content>
             </Step>
             <Step active>
@@ -78,33 +76,31 @@ const Pledge = props => {
             </Step>
             <Step>
               <Step.Content>
-                <Step.Title>Pledge Confirmed</Step.Title>
-                <Step.Description>❤️ Thanks </Step.Description>
+                <Step.Title>Pledge Confirmation</Step.Title>
+                <Step.Description> Thanks </Step.Description>
               </Step.Content>
             </Step>
           </Step.Group>
         );
       case "paid":
         return (
-          <Step.Group ordered stackable>
-            <Step completed>
+          <Step.Group>
+            <Step>
               <Step.Content>
-                <Step.Title>Pick Project</Step.Title>
-                <Step.Description>
-                  Choose a project to pledge to
-                </Step.Description>
-              </Step.Content>
-            </Step>
-            <Step completed>
-              <Step.Content>
-                <Step.Title>Payment</Step.Title>
-                <Step.Description>Enter billing information</Step.Description>
+                <Step.Title>🌱</Step.Title>
+                <Step.Description>✅ Project Selected</Step.Description>
               </Step.Content>
             </Step>
             <Step>
-              <Step.Content active>
-                <Step.Title>Pledge Confirmed</Step.Title>
-                <Step.Description>❤️ Thanks </Step.Description>
+              <Step.Content>
+                <Step.Title>🌲</Step.Title>
+                <Step.Description>✅ Information Provided</Step.Description>
+              </Step.Content>
+            </Step>
+            <Step>
+              <Step.Content completed>
+                <Step.Title>🌎</Step.Title>
+                <Step.Description> ✅ Pledge Confirmed </Step.Description>
               </Step.Content>
             </Step>
           </Step.Group>

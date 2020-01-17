@@ -12,14 +12,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <Container>
-      <Menu
-        borderless
-        inverted
-        as="footer"
-        fixed="bottom"
-        size="small"
-        stackable
-      >
+      <Menu borderless className="footer" fixed="bottom" size="small" stackable>
         <Menu.Item as={Link} to="/about">
           About
         </Menu.Item>

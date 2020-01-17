@@ -13,7 +13,7 @@ const Home = props => {
           style={{ fontSize: "3em" }}
         ></Header>
         <Button
-          positive
+          primary
           size="huge"
           content="Pledge Today"
           as={Link}
@@ -21,11 +21,13 @@ const Home = props => {
         ></Button>
       </Container>
       <Container className="overview">
-        <Header
-          as="h3"
-          content="sweetearth makes it easy to give."
-          style={{ fontSize: "2em" }}
-        ></Header>
+        <Container>
+          <Header
+            as="h3"
+            content="sweetearth makes it easy to give."
+            style={{ fontSize: "2em" }}
+          ></Header>
+        </Container>
         <div className="overview-element">
           <Header
             as="h3"

@@ -33,7 +33,7 @@ const NavBar = () => {
 
   return (
     <Container as="nav">
-      <Menu borderless inverted fixed="top" size="large" stackable>
+      <Menu borderless fixed="top" size="large" stackable>
         <Menu.Item>
           <img
             src="https://image.flaticon.com/icons/svg/2439/2439044.svg"
@@ -57,10 +57,8 @@ const NavBar = () => {
             Account
           </Menu.Item>
         ) : (
-          <Menu.Item position="right">
-            <Button secondary onClick={() => handleAuth()}>
-              Sign Up / Log In
-            </Button>
+          <Menu.Item position="right" onClick={() => handleAuth()}>
+            Sign Up / Log In
           </Menu.Item>
         )}
       </Menu>
