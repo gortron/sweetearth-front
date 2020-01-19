@@ -13,7 +13,7 @@ const Projects = props => {
     let title = "";
     if (context === "index") {
       title =
-        "These projects are curated for their ecological and societal impact.";
+        "These projects are validated, and curated for their ecological impact.";
     }
     return title;
   };

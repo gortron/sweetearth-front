@@ -7,7 +7,7 @@ const ProjectCard = props => {
   const { name, description, category, imgUrl, siteUrl } = project;
 
   const projectUrl = () => {
-    return "/projects/" + name.replace(/\s+/, "-").toLowerCase();
+    return "/projects/" + name.replace(/\s+/g, "-").toLowerCase();
   };
 
   const handleContext = () => {

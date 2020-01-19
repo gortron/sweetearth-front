@@ -135,6 +135,18 @@ const Pledge = props => {
       ) : null}
       {status === "paid" ? (
         <Fragment>
+          <Container>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player
+              src="https://assets8.lottiefiles.com/animated_stickers/lf_tgs_8W1fY7.json"
+              mode="bounce"
+              background="transparent"
+              speed=".75"
+              style={{ width: "400px", height: "400px", paddingTop: "30px"}}
+              loop
+              autoplay
+            ></lottie-player>
+          </Container>
           <Header style={{ fontSize: "2em" }}>
             You did it! Here's a haiku, as a treat:
           </Header>
@@ -146,18 +158,7 @@ const Pledge = props => {
               With tears. - Basho
             </i>
           </Header>
-          <Container>
-            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-            <lottie-player
-              src="https://assets8.lottiefiles.com/animated_stickers/lf_tgs_8W1fY7.json"
-              mode="bounce"
-              background="transparent"
-              speed=".75"
-              style={{ width: "400px", height: "400px" }}
-              loop
-              autoplay
-            ></lottie-player>
-          </Container>
+
           <p>
             Your pledge has been confirmed. You gave ${amount} to{" "}
             {checkout.name}. We've sent you an email with a confirmation number.

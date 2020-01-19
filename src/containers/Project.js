@@ -32,12 +32,12 @@ const Project = props => {
     return !data || !project ? (
       <p>Loading...</p>
     ) : (
-      <Container fluid className="page">
+      <Container fluid className="project">
         <Container
           fluid
           className="hero"
           style={{
-            background: `url(http://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Afognak_coastline.jpg/1280px-Afognak_coastline.jpg) no-repeat left top`,
+            background: `url(${project.imgUrl}) no-repeat left top`,
             backgroundSize: "cover"
           }}
         >
@@ -53,25 +53,11 @@ const Project = props => {
         </Container>
 
         <Container className="project-content">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <h3>
+            <i>Drawdown</i> solution type - {project.category}
+          </h3>
+          <h4>Estimated reduction (tons CO2) - {project.emissionReduction}</h4>
+          <p>{project.content}</p>
         </Container>
 
         <Button
@@ -90,14 +76,3 @@ const Project = props => {
 };
 
 export default Project;
-
-{
-  /* <Button
-          primary
-          size="huge"
-          content="Pledge Today"
-          onClick={() => redirect("/pledge")}
-          {/* as={Link}
-          to="/pledge" 
-        ></Button> */
-}

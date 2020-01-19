@@ -34,6 +34,7 @@ const App = () => {
 
   useEffect(() => {
     if (projects.length === 0) getProjects();
+    handleWindowResize();
   });
 
   const checkoutProject = project => {
