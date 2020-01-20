@@ -18,7 +18,8 @@ import { store } from "./store.js";
 
 const App = () => {
   const { state, dispatch } = useContext(store);
-  const [projects, setProjects] = useState([]);
+  const { projects } = state;
+  // const [projects, setProjects] = useState([]);
   const [checkout, setCheckout] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   // const [mobile, setMobile] = useState(false);
@@ -54,17 +55,15 @@ const App = () => {
     const endpoint = `http://localhost:3000/projects`;
     const response = await fetch(endpoint);
     const data = await response.json();
-    setProjects(data);
+    // setProjects(data);
+    dispatch({ type: "projects", payload: data });
   };
-  {
-    /* <NavBar mobile={mobile} /> */
-  }
+
   return (
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
       <Router history={history}>
         <div className="App">
           <Segment vertical>
-            {/* <NavBar mobile={mobile} /> */}
             <NavBar />
             <Switch>
               <Route exact path="/" component={Home} />
@@ -103,7 +102,6 @@ const App = () => {
               <Route path="/about" component={About} />
               <PrivateRoute path="/account" component={Account} />
             </Switch>
-            {/* <Footer mobile={mobile} /> */}
             <Footer />
           </Segment>
         </div>

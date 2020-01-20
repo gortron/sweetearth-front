@@ -1,16 +1,19 @@
 import React, { useEffect, useContext } from "react";
 import { store } from "../store.js";
+import { getProjects } from "../utils/utility_functions";
 import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
 const Projects = props => {
-  const { context, data, getProjects, checkoutProject } = props;
+  // const { context, data, getProjects, checkoutProject } = props;
+  const { context, checkoutProject } = props;
   const { state, dispatch } = useContext(store);
-  const { mobile } = state;
+  const { mobile, projects } = state;
   console.log(state);
 
   useEffect(() => {
-    if (!data) getProjects();
+    if (!projects) dispatch({ type: "projects", payload: getProjects() });
+    // if (!projects) getProjects();
     // dispatch({ type: "mobile" });
   });
 
@@ -31,14 +34,14 @@ const Projects = props => {
         style={{ fontSize: "3em" }}
       ></Header>
       <Card.Group itemsPerRow={mobile ? 1 : 2}>
-        {!data ? (
+        {!projects ? (
           <p>Loading...</p>
         ) : (
-          data.map((project, idx) => {
+          projects.map((project, idx) => {
             return (
               <ProjectCard
                 key={idx}
-                project={project.attributes}
+                project={project}
                 context={context}
                 checkoutProject={checkoutProject}
               ></ProjectCard>

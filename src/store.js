@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-const initialState = { mobile: true };
+const initialState = { mobile: true, projects: [] };
 const store = createContext(initialState);
 const { Provider } = store;
 const AppDispatchContext = createContext();
@@ -22,18 +22,16 @@ const AppDispatchContext = createContext();
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      // case "mobile": {
-      //   return { mobile: true };
-      // }
-      // case "desktop": {
-      //   return { mobile: false };
-      // }
       case "checkout": {
         return { ...state, checkout: action.payload };
       }
 
       case "mobile": {
         return { ...state, mobile: action.payload };
+      }
+
+      case "projects": {
+        return { ...state, projects: action.payload };
       }
 
       default: {
