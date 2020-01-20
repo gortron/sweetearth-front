@@ -30,6 +30,7 @@ const Pledge = () => {
   const confirmPayment = amount => {
     setStatus("paid");
     setAmount(amount / 100);
+    dispatch({ type: "checkout", payload: null });
   };
 
   const cancelPledge = () => {
@@ -125,7 +126,6 @@ const Pledge = () => {
           <Elements>
             <CheckoutForm
               confirmPayment={confirmPayment}
-              project={{ ...checkout }}
               cancelPledge={cancelPledge}
             />
           </Elements>

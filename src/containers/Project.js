@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { store } from "../store.js";
-import { Container, Header, Image, Button, Icon } from "semantic-ui-react";
-import ProjectCard from "../components/ProjectCard";
+import { Container, Header, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { getProjects } from "../utils/utility_functions";
 
@@ -31,9 +30,6 @@ const Project = props => {
   };
 
   const checkoutProject = () => {
-    // project
-    //   ? dispatch({ type: "checkout", payload: project })
-    //   : dispatch({ type: "checkout", payload: null });
     dispatch({ type: "checkout", payload: project ? project : null });
   };
 

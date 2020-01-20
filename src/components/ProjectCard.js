@@ -1,12 +1,12 @@
-import React, { useState, useEffect, Fragment, useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { store } from "../store";
-import { Card, Icon, Image, Button } from "semantic-ui-react";
+import { Card, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const ProjectCard = props => {
   const { project } = props;
-  const { state, dispatch } = useContext(store);
-  const { name, description, category, imgUrl, siteUrl } = project;
+  const { dispatch } = useContext(store);
+  const { name, description, category, imgUrl } = project;
 
   const projectUrl = () => {
     return "/projects/" + name.replace(/\s+/g, "-").toLowerCase();

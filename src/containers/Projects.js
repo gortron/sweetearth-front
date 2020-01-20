@@ -6,7 +6,7 @@ import ProjectCard from "../components/ProjectCard";
 
 const Projects = props => {
   // const { context, data, getProjects, checkoutProject } = props;
-  const { page, checkoutProject } = props;
+  const { page } = props;
   const { state, dispatch } = useContext(store);
   const { mobile, projects } = state;
 

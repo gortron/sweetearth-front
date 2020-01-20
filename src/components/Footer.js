@@ -1,18 +1,11 @@
 import React, { useContext } from "react";
 import { store } from "../store";
-import {
-  Responsive,
-  Segment,
-  Button,
-  Menu,
-  Container,
-  Header
-} from "semantic-ui-react";
+import { Menu, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-const Footer = props => {
+const Footer = () => {
   // const { mobile } = props;
-  const { state, dispatch } = useContext(store);
+  const { state } = useContext(store);
   const { mobile } = state;
 
   const renderDesktop = () => {
@@ -40,7 +33,9 @@ const Footer = props => {
           >
             github
           </Menu.Item>
-          <Menu.Item position="right">Made with ❤️ © 2019 </Menu.Item>
+          <Menu.Item position="right">
+            Made with <span role="img"> ❤️ </span> © 2019{" "}
+          </Menu.Item>
         </Menu>
       </Container>
     );

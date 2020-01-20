@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect } from "react";
-import { Segment, Container, Header, Button } from "semantic-ui-react";
+import React from "react";
+import { Container, Header, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-const Home = props => {
+const Home = () => {
   return (
     <Container fluid className="home">
       <Container fluid className="home-hero">

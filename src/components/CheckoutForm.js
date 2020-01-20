@@ -1,7 +1,7 @@
-import React, { useState, Fragment, useEffect, useContext } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import { store } from "../store";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import { useAuth0 } from "../react-auth0";
+// import { useAuth0 } from "../react-auth0";
 
 import {
   Button,
@@ -10,13 +10,12 @@ import {
   Header,
   Label,
   Message,
-  Popup,
-  Icon
+  Popup
 } from "semantic-ui-react";
 
 const CheckoutForm = props => {
   const { confirmPayment, cancelPledge, stripe } = props;
-  const { state, dispatch } = useContext(store);
+  const { state } = useContext(store);
   const { checkout } = state;
 
   const [amount, setAmount] = useState(0);
@@ -25,7 +24,7 @@ const CheckoutForm = props => {
   const [issues, setIssues] = useState([]);
   const [issuesVisible, setIssuesVisible] = useState(false);
 
-  const { loading, user } = useAuth0();
+  // const { loading, user } = useAuth0();
 
   // useEffect(() => {
   //   if (user && email === "") {

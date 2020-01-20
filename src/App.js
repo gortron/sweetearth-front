@@ -1,4 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
+import { store } from "./store.js";
+import { getProjects } from "./utils/utility_functions";
+import history from "./utils/history";
+import { StripeProvider } from "react-stripe-elements";
+import { Router, Route, Switch } from "react-router-dom";
+import { Segment } from "semantic-ui-react";
+import "./App.css";
+
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
 import PrivateRoute from "./components/PrivateRoute.js";
@@ -8,28 +16,18 @@ import Project from "./containers/Project";
 import Pledge from "./containers/Pledge";
 import About from "./containers/About";
 import Account from "./containers/Account";
-import { StripeProvider } from "react-stripe-elements";
-import { Segment, Container } from "semantic-ui-react";
-import "./App.css";
-import { Router, Route, Switch } from "react-router-dom";
-import history from "./utils/history";
-
-import { store } from "./store.js";
 
 const App = () => {
   const { state, dispatch } = useContext(store);
   const { projects } = state;
   // const [projects, setProjects] = useState([]);
-  const [checkout, setCheckout] = useState(null);
+  // const [checkout, setCheckout] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   // const [mobile, setMobile] = useState(false);
 
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
-    // windowWidth < 780 ? setMobile(true) : setMobile(false);
-    windowWidth < 780
-      ? dispatch({ type: "mobile", payload: true })
-      : dispatch({ type: "mobile", payload: false });
+    dispatch({ type: "mobile", payload: windowWidth < 780 ? true : false });
   };
 
   useEffect(() => {
@@ -44,20 +42,21 @@ const App = () => {
   }, [windowWidth]);
 
   useEffect(() => {
-    if (projects.length === 0) getProjects();
+    // if (!projects) getProjects();
+    if (!projects) dispatch({ type: "projects", payload: "hello" });
   });
 
-  const checkoutProject = project => {
-    project ? setCheckout({ ...project }) : setCheckout(null);
-  };
+  // const checkoutProject = project => {
+  //   project ? setCheckout({ ...project }) : setCheckout(null);
+  // };
 
-  const getProjects = async () => {
-    const endpoint = `http://localhost:3000/projects`;
-    const response = await fetch(endpoint);
-    const data = await response.json();
-    // setProjects(data);
-    dispatch({ type: "projects", payload: data });
-  };
+  // const getProjects = async () => {
+  //   const endpoint = `http://localhost:3000/projects`;
+  //   const response = await fetch(endpoint);
+  //   const data = await response.json();
+  //   // setProjects(data);
+  //   dispatch({ type: "projects", payload: data });
+  // };
 
   return (
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
@@ -70,20 +69,10 @@ const App = () => {
               <Route
                 exact
                 path="/projects"
-                render={props => <Projects {...projects} page="projects" />}
+                render={props => <Projects page="projects" />}
               />
               <Route path="/projects/:name" component={Project} />
-              <Route
-                path="/pledge"
-                render={props => (
-                  <Pledge
-                    {...projects}
-                    getProjects={getProjects}
-                    checkout={checkout}
-                    checkoutProject={checkoutProject}
-                  />
-                )}
-              />
+              <Route path="/pledge" component={Pledge} />
               <Route path="/about" component={About} />
               <PrivateRoute path="/account" component={Account} />
             </Switch>
