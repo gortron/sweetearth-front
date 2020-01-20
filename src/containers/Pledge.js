@@ -37,7 +37,7 @@ const Pledge = props => {
       case "unselected":
         return (
           <Step.Group>
-            <Step>
+            <Step active>
               <Step.Content>
                 <Step.Title>Pick Project</Step.Title>
                 <Step.Description>
@@ -97,8 +97,8 @@ const Pledge = props => {
                 <Step.Description>✅ Information Provided</Step.Description>
               </Step.Content>
             </Step>
-            <Step>
-              <Step.Content completed>
+            <Step active>
+              <Step.Content>
                 <Step.Title>🌎</Step.Title>
                 <Step.Description> ✅ Pledge Confirmed </Step.Description>
               </Step.Content>
@@ -123,7 +123,7 @@ const Pledge = props => {
       ) : null}
       {status === "selected" ? (
         <Container className="pledge-checkout">
-          <Image rounded src={checkout.imgUrl} style={{ width: "50%" }}></Image>
+          <Image rounded src={checkout.imgUrl} style={{ width: "60%" }}></Image>
           <Elements>
             <CheckoutForm
               confirmPayment={confirmPayment}
@@ -142,7 +142,7 @@ const Pledge = props => {
               mode="bounce"
               background="transparent"
               speed=".75"
-              style={{ width: "400px", height: "400px", paddingTop: "30px"}}
+              style={{ paddingTop: "30px" }}
               loop
               autoplay
             ></lottie-player>

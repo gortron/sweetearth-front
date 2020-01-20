@@ -108,15 +108,26 @@ const CheckoutForm = props => {
           <Header as="h3" style={{ fontSize: "2em" }}>
             Pledging to: {project.name}
           </Header>
+        </div>
+        <div>
           <Input
             focus
             label="Pledge Amount ($)*"
             placeholder="e.g. 10"
             onChange={handleAmountChange}
           />
+
           <Popup
             content="Wondering how much to Pledge? As a rough estimate, multiply your hours flown by x1.5, and add a dollar sign in front. So for a 6 hour flight, 6 x 1.5 = $9. This is a back-of-the-envelope estimate. cooleffect.org for more info on calculating your offset, and other projects you can contribute to."
-            trigger={<Button circular size="tiny" primary icon="info" />}
+            trigger={
+              <Button
+                circular
+                size="tiny"
+                primary
+                icon="info"
+                style={{ marginLeft: "10px" }}
+              />
+            }
             inverted
           />
         </div>
@@ -131,7 +142,6 @@ const CheckoutForm = props => {
           label="Confirm Email*"
           placeholder="e.g. jane.goodall@earth.co"
           onChange={handleEmailConfirmationChange}
-          style={{ color: "#AEAEAE" }}
         />
         <div className="card-form">
           <div style={{ width: "25%" }}>

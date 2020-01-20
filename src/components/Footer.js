@@ -47,7 +47,7 @@ const Footer = props => {
     return (
       <Container>
         <Menu borderless className="footer" fixed="bottom" size="small">
-          <Menu.Item position="center">Made with ❤️ © 2019 </Menu.Item>
+          <Menu.Item>Made with ❤️ © 2019 </Menu.Item>
         </Menu>
       </Container>
     );
