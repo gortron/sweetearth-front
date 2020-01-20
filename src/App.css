@@ -5,6 +5,10 @@ body {
   background-color: #fffcf9;
 }
 
+::placeholder {
+  color: #757575 !important;
+}
+
 .ui {
   color: black;
 }
@@ -128,14 +132,19 @@ body {
   text-align: left;
 }
 
-.card-form .div {
-  display: inline-block !important;
-  border: 1px solid #85b7d9;
+div.card-form {
+  /* display: inline-block !important; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* width: 20%; */
+  /* border: 1px solid #85b7d9; */
 }
 
-.card-form .div * {
-  display: inline-block !important;
-  border: 1px solid #85b7d9;
+div.card-form * {
+  /* display: inline-block !important; */
+  /* width: 50%; */
+  /* border: 1px solid #85b7d9; */
 }
 
 .StripeElement {

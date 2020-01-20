@@ -116,15 +116,7 @@ const CheckoutForm = props => {
           />
           <Popup
             content="Wondering how much to Pledge? As a rough estimate, multiply your hours flown by x1.5, and add a dollar sign in front. So for a 6 hour flight, 6 x 1.5 = $9. This is a back-of-the-envelope estimate. cooleffect.org for more info on calculating your offset, and other projects you can contribute to."
-            trigger={
-              <Button
-                circular
-                size="tiny"
-                primary
-                icon="info"
-                style={{ marginLeft: "10px" }}
-              />
-            }
+            trigger={<Button circular size="tiny" primary icon="info" />}
             inverted
           />
         </div>
@@ -139,12 +131,15 @@ const CheckoutForm = props => {
           label="Confirm Email*"
           placeholder="e.g. jane.goodall@earth.co"
           onChange={handleEmailConfirmationChange}
+          style={{ color: "#AEAEAE" }}
         />
         <div className="card-form">
-          <div>
-            <Label size="big">Payment Card</Label>
+          <div style={{ width: "25%" }}>
+            <Label size="large" style={{ height: "85%", width: "100%" }}>
+              Payment Card*
+            </Label>
           </div>
-          <div>
+          <div style={{ width: "75%" }}>
             <CardElement />
           </div>
         </div>
