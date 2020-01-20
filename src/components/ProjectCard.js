@@ -20,7 +20,12 @@ const ProjectCard = props => {
               content="Pledge"
               onClick={() => checkoutProject(project)}
             ></Button>
-            <Button content="Learn More" as={Link} to={projectUrl()}></Button>
+            <Button
+              content="Learn More"
+              as={Link}
+              to={projectUrl()}
+              style={{ marginTop: "10px" }}
+            ></Button>
           </Fragment>
         );
       case "index":

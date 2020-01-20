@@ -86,9 +86,6 @@ body {
 }
 
 .ui.about-container .about-container-element {
-  /* flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   max-width: 300px;
   margin: 2em;
 }
@@ -109,19 +106,17 @@ body {
   height: 50vh;
 }
 
-.ui.container .overview {
-  padding-top: 3%;
-  padding-bottom: 4%;
+.ui.overview {
+  padding-top: 10px;
+  padding-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   text-align: left;
 }
 
-.ui.container .overview .overview-element {
-  align-items: center;
-  justify-content: center;
-  width: 40%;
+.ui.overview .overview-element {
+  max-width: 300px;
   margin: 2em;
 }
 

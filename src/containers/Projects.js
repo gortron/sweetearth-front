@@ -25,7 +25,7 @@ const Projects = props => {
         content={handleTitle()}
         style={{ fontSize: "3em" }}
       ></Header>
-      <Card.Group itemsPerRow={2}>
+      <Card.Group itemsPerRow={1}>
         {!data ? (
           <p>Loading...</p>
         ) : (
