@@ -20,10 +20,7 @@ import Account from "./containers/Account";
 const App = () => {
   const { state, dispatch } = useContext(store);
   const { projects } = state;
-  // const [projects, setProjects] = useState([]);
-  // const [checkout, setCheckout] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const [mobile, setMobile] = useState(false);
 
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
@@ -32,6 +29,12 @@ const App = () => {
 
   useEffect(() => {
     handleWindowResize();
+    async function fetchProjects() {
+      dispatch({ type: "projects", payload: getProjects() });
+    }
+    if (!projects) fetchProjects();
+
+    // if (!projects) dispatch({ type: "projects", payload: getProjects() });
   }, []);
 
   useEffect(() => {
@@ -41,22 +44,22 @@ const App = () => {
     };
   }, [windowWidth]);
 
-  useEffect(() => {
-    // if (!projects) getProjects();
-    if (!projects) dispatch({ type: "projects", payload: "hello" });
-  });
+  // useEffect(() => {
+  //   // if (!projects) getProjects();
+  // if (!projects) dispatch({ type: "projects", payload: "hello" });
+  // });
 
   // const checkoutProject = project => {
   //   project ? setCheckout({ ...project }) : setCheckout(null);
   // };
 
-  // const getProjects = async () => {
-  //   const endpoint = `http://localhost:3000/projects`;
-  //   const response = await fetch(endpoint);
-  //   const data = await response.json();
-  //   // setProjects(data);
-  //   dispatch({ type: "projects", payload: data });
-  // };
+  const getProjects = async () => {
+    const endpoint = `http://localhost:3000/projects`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    // setProjects(data);
+    dispatch({ type: "projects", payload: data });
+  };
 
   return (
     <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">

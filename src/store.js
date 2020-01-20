@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-const initialState = { mobile: true, projects: [], checkout: null };
+const initialState = { mobile: true, projects: null, checkout: null };
 const store = createContext(initialState);
 const { Provider } = store;
 const AppDispatchContext = createContext();
@@ -22,18 +22,15 @@ const AppDispatchContext = createContext();
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case "checkout": {
-        return { ...state, checkout: action.payload };
-      }
-
       case "mobile": {
         return { ...state, mobile: action.payload };
       }
-
+      case "checkout": {
+        return { ...state, checkout: action.payload };
+      }
       case "projects": {
         return { ...state, projects: action.payload };
       }
-
       default: {
         throw new Error(`Unhandled action type: ${action.type}`);
       }
