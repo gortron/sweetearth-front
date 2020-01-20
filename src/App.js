@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
 import PrivateRoute from "./components/PrivateRoute.js";
@@ -14,7 +14,10 @@ import "./App.css";
 import { Router, Route, Switch } from "react-router-dom";
 import history from "./utils/history";
 
+import { store } from "./store.js";
+
 const App = () => {
+  const { state, dispatch } = useContext(store);
   const [projects, setProjects] = useState([]);
   const [checkout, setCheckout] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -22,19 +25,25 @@ const App = () => {
 
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
-    windowWidth < 780 ? setMobile(true) : setMobile(false);
+    // windowWidth < 780 ? setMobile(true) : setMobile(false);
+    windowWidth < 780
+      ? dispatch({ type: "mobile", payload: "true" })
+      : dispatch({ type: "mobile", payload: "false" });
   };
+
+  useEffect(() => {
+    handleWindowResize();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", handleWindowResize);
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  });
+  }, [windowWidth]);
 
   useEffect(() => {
     if (projects.length === 0) getProjects();
-    handleWindowResize();
   });
 
   const checkoutProject = project => {

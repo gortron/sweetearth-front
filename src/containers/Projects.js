@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { store } from "../store.js";
 import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
 const Projects = props => {
   const { context, data, getProjects, checkoutProject } = props;
+  const { state, dispatch } = useContext(store);
+  console.log(state);
 
   useEffect(() => {
     if (!data) getProjects();
+    // dispatch({ type: "mobile" });
   });
 
   const handleTitle = () => {
@@ -25,7 +29,7 @@ const Projects = props => {
         content={handleTitle()}
         style={{ fontSize: "3em" }}
       ></Header>
-      <Card.Group itemsPerRow={1}>
+      <Card.Group itemsPerRow={true ? 1 : 2}>
         {!data ? (
           <p>Loading...</p>
         ) : (

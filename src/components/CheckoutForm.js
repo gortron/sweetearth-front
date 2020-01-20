@@ -116,8 +116,8 @@ const CheckoutForm = props => {
             placeholder="e.g. 10"
             onChange={handleAmountChange}
           />
-
           <Popup
+            inverted
             content="Wondering how much to Pledge? As a rough estimate, multiply your hours flown by x1.5, and add a dollar sign in front. So for a 6 hour flight, 6 x 1.5 = $9. This is a back-of-the-envelope estimate. cooleffect.org for more info on calculating your offset, and other projects you can contribute to."
             trigger={
               <Button
@@ -128,7 +128,6 @@ const CheckoutForm = props => {
                 style={{ marginLeft: "10px" }}
               />
             }
-            inverted
           />
         </div>
         <Input

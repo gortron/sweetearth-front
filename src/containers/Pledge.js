@@ -1,13 +1,15 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, useContext } from "react";
 import { Container, Header, Step, Image } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
 import "@lottiefiles/lottie-player";
+import { store } from "../store.js";
 
 import Projects from "./Projects";
 import CheckoutForm from "../components/CheckoutForm";
 
 const Pledge = props => {
   const { data, getProjects, checkout, checkoutProject } = props;
+  const { state, dispatch } = useContext(store);
 
   const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
@@ -19,7 +21,8 @@ const Pledge = props => {
 
   const projectSelected = project => {
     setStatus("selected");
-    checkoutProject({ ...project });
+    dispatch({ type: "checkout", payload: { ...project } });
+    // checkoutProject({ ...project });
   };
 
   const confirmPayment = amount => {
