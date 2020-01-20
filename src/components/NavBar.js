@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useAuth0 } from "../react-auth0";
 import { Dropdown, Segment, Button, Menu, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { store } from "../store";
 
 const NavBar = props => {
-  const { mobile } = props;
+  // const { mobile } = props;
+  const { state, dispatch } = useContext(store);
+  const { mobile } = state;
 
-  const {
-    isAuthenticated,
-    loginWithRedirect,
-    logout,
-    loading,
-    user,
-    renewToken
-  } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, loading, user } = useAuth0();
 
   const handleAuth = async () => {
     await loginWithRedirect({});

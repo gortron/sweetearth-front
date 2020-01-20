@@ -6,6 +6,7 @@ import ProjectCard from "../components/ProjectCard";
 const Projects = props => {
   const { context, data, getProjects, checkoutProject } = props;
   const { state, dispatch } = useContext(store);
+  const { mobile } = state;
   console.log(state);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const Projects = props => {
         content={handleTitle()}
         style={{ fontSize: "3em" }}
       ></Header>
-      <Card.Group itemsPerRow={true ? 1 : 2}>
+      <Card.Group itemsPerRow={mobile ? 1 : 2}>
         {!data ? (
           <p>Loading...</p>
         ) : (

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { store } from "../store";
 import {
   Responsive,
   Segment,
@@ -10,7 +11,9 @@ import {
 import { Link } from "react-router-dom";
 
 const Footer = props => {
-  const { mobile } = props;
+  // const { mobile } = props;
+  const { state, dispatch } = useContext(store);
+  const { mobile } = state;
 
   const renderDesktop = () => {
     return (

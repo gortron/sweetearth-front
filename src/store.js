@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-const initialState = {};
+const initialState = { mobile: true };
 const store = createContext(initialState);
 const { Provider } = store;
 const AppDispatchContext = createContext();

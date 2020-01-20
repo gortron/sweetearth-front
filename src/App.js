@@ -21,14 +21,14 @@ const App = () => {
   const [projects, setProjects] = useState([]);
   const [checkout, setCheckout] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [mobile, setMobile] = useState(false);
+  // const [mobile, setMobile] = useState(false);
 
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
     // windowWidth < 780 ? setMobile(true) : setMobile(false);
     windowWidth < 780
-      ? dispatch({ type: "mobile", payload: "true" })
-      : dispatch({ type: "mobile", payload: "false" });
+      ? dispatch({ type: "mobile", payload: true })
+      : dispatch({ type: "mobile", payload: false });
   };
 
   useEffect(() => {
@@ -64,7 +64,8 @@ const App = () => {
       <Router history={history}>
         <div className="App">
           <Segment vertical>
-            <NavBar mobile={mobile} />
+            {/* <NavBar mobile={mobile} /> */}
+            <NavBar />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route
@@ -102,7 +103,8 @@ const App = () => {
               <Route path="/about" component={About} />
               <PrivateRoute path="/account" component={Account} />
             </Switch>
-            <Footer mobile={mobile} />
+            {/* <Footer mobile={mobile} /> */}
+            <Footer />
           </Segment>
         </div>
       </Router>
