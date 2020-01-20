@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-const initialState = { mobile: true, projects: [] };
+const initialState = { mobile: true, projects: [], checkout: null };
 const store = createContext(initialState);
 const { Provider } = store;
 const AppDispatchContext = createContext();

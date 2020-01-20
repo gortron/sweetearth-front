@@ -1,21 +1,23 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
-import { Container, Header, Step, Image } from "semantic-ui-react";
-import { Elements } from "react-stripe-elements";
-import "@lottiefiles/lottie-player";
 import { store } from "../store.js";
-
+import { getProjects } from "../utils/utility_functions";
 import Projects from "./Projects";
 import CheckoutForm from "../components/CheckoutForm";
 
-const Pledge = props => {
-  const { data, getProjects, checkout, checkoutProject } = props;
+import { Container, Header, Step, Image } from "semantic-ui-react";
+import { Elements } from "react-stripe-elements";
+import "@lottiefiles/lottie-player";
+
+const Pledge = () => {
+  // const { data, getProjects, checkout, checkoutProject } = props;
   const { state, dispatch } = useContext(store);
+  const { projects, checkout } = state;
 
   const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
 
   useEffect(() => {
-    if (!data) getProjects();
+    if (!projects) dispatch({ type: "projects", payload: getProjects() });
     if (checkout && status === "unselected") projectSelected({ ...checkout });
   });
 
@@ -31,7 +33,7 @@ const Pledge = props => {
   };
 
   const cancelPledge = () => {
-    checkoutProject(null);
+    dispatch({ type: "checkout", payload: null });
     setStatus("unselected");
   };
 
@@ -116,14 +118,7 @@ const Pledge = props => {
   return (
     <Container fluid className="page">
       {renderSteps()}
-      {status === "unselected" ? (
-        <Projects
-          data={data}
-          getProjects={getProjects}
-          context="pledge"
-          checkoutProject={checkoutProject}
-        />
-      ) : null}
+      {status === "unselected" ? <Projects page="pledge" /> : null}
       {status === "selected" ? (
         <Container className="pledge-checkout">
           <Image rounded src={checkout.imgUrl} style={{ width: "60%" }}></Image>

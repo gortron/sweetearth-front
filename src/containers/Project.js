@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { store } from "../store.js";
 import { Container, Header, Image, Button, Icon } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 import { Link } from "react-router-dom";
+import { getProjects } from "../utils/utility_functions";
 
 const Project = props => {
-  const { data, getProjects, checkoutProject } = props;
-
+  const { state, dispatch } = useContext(store);
+  const { projects } = state;
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    if (!data) getProjects();
-    if (data && !project) findProject();
+    if (!projects) dispatch({ type: "projects", payload: getProjects() });
+    if (projects && !project) findProject();
   });
 
   const findProject = () => {
@@ -22,14 +24,21 @@ const Project = props => {
       l.toUpperCase()
     );
 
-    let project = data.filter(
-      project => project.attributes.name === capitalizedProjectName
+    let project = projects.filter(
+      project => project.name === capitalizedProjectName
     )[0];
-    setProject({ ...project.attributes });
+    setProject({ ...project });
+  };
+
+  const checkoutProject = () => {
+    // project
+    //   ? dispatch({ type: "checkout", payload: project })
+    //   : dispatch({ type: "checkout", payload: null });
+    dispatch({ type: "checkout", payload: project ? project : null });
   };
 
   const handleRender = () => {
-    return !data || !project ? (
+    return !projects || !project ? (
       <p>Loading...</p>
     ) : (
       <Container fluid className="project">
@@ -67,7 +76,7 @@ const Project = props => {
           primary
           size="huge"
           content="Pledge Today"
-          onClick={() => checkoutProject(project)}
+          onClick={() => checkoutProject()}
           as={Link}
           to={`/pledge`}
         ></Button>

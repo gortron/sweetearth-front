@@ -70,24 +70,9 @@ const App = () => {
               <Route
                 exact
                 path="/projects"
-                render={props => (
-                  <Projects
-                    {...projects}
-                    getProjects={getProjects}
-                    context="index"
-                  />
-                )}
+                render={props => <Projects {...projects} page="projects" />}
               />
-              <Route
-                path="/projects/:name"
-                render={props => (
-                  <Project
-                    {...projects}
-                    getProjects={getProjects}
-                    checkoutProject={checkoutProject}
-                  />
-                )}
-              />
+              <Route path="/projects/:name" component={Project} />
               <Route
                 path="/pledge"
                 render={props => (

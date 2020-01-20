@@ -1,4 +1,5 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, useContext } from "react";
+import { store } from "../store";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import { useAuth0 } from "../react-auth0";
 
@@ -14,7 +15,10 @@ import {
 } from "semantic-ui-react";
 
 const CheckoutForm = props => {
-  const { project, confirmPayment, stripe, cancelPledge } = props;
+  const { confirmPayment, cancelPledge, stripe } = props;
+  const { state, dispatch } = useContext(store);
+  const { checkout } = state;
+
   const [amount, setAmount] = useState(0);
   const [email, setEmail] = useState("");
   const [emailConfirmation, setEmailConfirmation] = useState("");
@@ -89,7 +93,7 @@ const CheckoutForm = props => {
         stripe_token: token.id,
         user_email: email,
         amount: amount,
-        project_name: project.name
+        project_name: checkout.name
       };
       let response = await fetch("http://localhost:3000/charge", {
         method: "POST",
@@ -106,7 +110,7 @@ const CheckoutForm = props => {
       <Container className="checkout-form">
         <div>
           <Header as="h3" style={{ fontSize: "2em" }}>
-            Pledging to: {project.name}
+            Pledging to: {checkout.name}
           </Header>
         </div>
         <div>

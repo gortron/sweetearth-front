@@ -1,24 +1,30 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, useContext } from "react";
+import { store } from "../store";
 import { Card, Icon, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const ProjectCard = props => {
-  const { project, checkoutProject } = props;
+  const { project } = props;
+  const { state, dispatch } = useContext(store);
   const { name, description, category, imgUrl, siteUrl } = project;
 
   const projectUrl = () => {
     return "/projects/" + name.replace(/\s+/g, "-").toLowerCase();
   };
 
+  const checkoutProject = () => {
+    dispatch({ type: "checkout", payload: project });
+  };
+
   const handleContext = () => {
-    switch (props.context) {
+    switch (props.page) {
       case "pledge":
         return (
           <Fragment>
             <Button
               primary
               content="Pledge"
-              onClick={() => checkoutProject(project)}
+              onClick={() => checkoutProject()}
             ></Button>
             <Button
               content="Learn More"
@@ -28,7 +34,7 @@ const ProjectCard = props => {
             ></Button>
           </Fragment>
         );
-      case "index":
+      case "projects":
         return (
           <Button content="Learn More" as={Link} to={projectUrl()}></Button>
         );

@@ -6,20 +6,17 @@ import ProjectCard from "../components/ProjectCard";
 
 const Projects = props => {
   // const { context, data, getProjects, checkoutProject } = props;
-  const { context, checkoutProject } = props;
+  const { page, checkoutProject } = props;
   const { state, dispatch } = useContext(store);
   const { mobile, projects } = state;
-  console.log(state);
 
   useEffect(() => {
     if (!projects) dispatch({ type: "projects", payload: getProjects() });
-    // if (!projects) getProjects();
-    // dispatch({ type: "mobile" });
   });
 
   const handleTitle = () => {
     let title = "";
-    if (context === "index") {
+    if (page === "projects") {
       title =
         "These projects are validated, and curated for their ecological impact.";
     }
@@ -27,7 +24,7 @@ const Projects = props => {
   };
 
   return (
-    <Container className={context}>
+    <Container className={page}>
       <Header
         as="h1"
         content={handleTitle()}
@@ -42,8 +39,7 @@ const Projects = props => {
               <ProjectCard
                 key={idx}
                 project={project}
-                context={context}
-                checkoutProject={checkoutProject}
+                page={page}
               ></ProjectCard>
             );
           })
