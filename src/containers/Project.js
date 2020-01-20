@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Header, Image, Button } from "semantic-ui-react";
+import { Container, Header, Image, Button, Icon } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 import { Link } from "react-router-dom";
 
@@ -58,6 +58,9 @@ const Project = props => {
           </h3>
           <h4>Estimated reduction (tons CO2) - {project.emissionReduction}</h4>
           <p>{project.content}</p>
+          <p>
+            <a href={project.siteUrl}>🌎 Project Website</a>
+          </p>
         </Container>
 
         <Button
