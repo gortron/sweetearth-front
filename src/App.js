@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { store } from "./store.js";
-import { getProjects } from "./utils/utility_functions";
+import { useProjectsDispatch } from "./utils/utility_functions";
 import history from "./utils/history";
 import { StripeProvider } from "react-stripe-elements";
 import { Router, Route, Switch } from "react-router-dom";
@@ -22,6 +22,8 @@ const App = () => {
   const { projects } = state;
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
     dispatch({ type: "mobile", payload: windowWidth < 780 ? true : false });
@@ -29,11 +31,10 @@ const App = () => {
 
   useEffect(() => {
     handleWindowResize();
-    async function fetchProjects() {
-      dispatch({ type: "projects", payload: getProjects() });
-    }
-    if (!projects) fetchProjects();
-
+    // async function fetchProjects() {
+    //   dispatch({ type: "projects", payload: getProjects() });
+    // }
+    // if (!projects) fetchProjects();
     // if (!projects) dispatch({ type: "projects", payload: getProjects() });
   }, []);
 

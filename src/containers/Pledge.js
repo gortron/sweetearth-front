@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
 import { store } from "../store.js";
-import { getProjects } from "../utils/utility_functions";
+import { useProjectsDispatch } from "../utils/utility_functions";
 import Projects from "./Projects";
 import CheckoutForm from "../components/CheckoutForm";
 
@@ -16,8 +16,10 @@ const Pledge = () => {
   const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
 
+  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+
   useEffect(() => {
-    if (!projects) dispatch({ type: "projects", payload: getProjects() });
+    // if (!projects) dispatch({ type: "projects", payload: getProjects() });
     if (checkout && status === "unselected") projectSelected({ ...checkout });
   });
 

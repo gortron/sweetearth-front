@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { store } from "../store.js";
-import { getProjects } from "../utils/utility_functions";
+import { useProjectsDispatch } from "../utils/utility_functions";
 import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
@@ -10,8 +10,10 @@ const Projects = props => {
   const { state, dispatch } = useContext(store);
   const { mobile, projects } = state;
 
+  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+
   useEffect(() => {
-    if (!projects) dispatch({ type: "projects", payload: getProjects() });
+    // if (!projects) dispatch({ type: "projects", payload: getProjects() });
   });
 
   const handleTitle = () => {

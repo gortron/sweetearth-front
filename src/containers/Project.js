@@ -2,15 +2,17 @@ import React, { useState, useEffect, useContext } from "react";
 import { store } from "../store.js";
 import { Container, Header, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { getProjects } from "../utils/utility_functions";
+import { useProjectsDispatch } from "../utils/utility_functions";
 
 const Project = props => {
   const { state, dispatch } = useContext(store);
   const { projects } = state;
   const [project, setProject] = useState(null);
 
+  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+
   useEffect(() => {
-    if (!projects) dispatch({ type: "projects", payload: getProjects() });
+    // if (!projects) dispatch({ type: "projects", payload: getProjects() });
     if (projects && !project) findProject();
   });
 
