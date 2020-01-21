@@ -1,7 +1,7 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, useEffect, Fragment, useContext } from "react";
 import { store } from "../store";
 import { CardElement, injectStripe } from "react-stripe-elements";
-// import { useAuth0 } from "../react-auth0";
+import { useAuth0 } from "../react-auth0";
 
 import {
   Button,
@@ -24,14 +24,14 @@ const CheckoutForm = props => {
   const [issues, setIssues] = useState([]);
   const [issuesVisible, setIssuesVisible] = useState(false);
 
-  // const { loading, user } = useAuth0();
+  const { user } = useAuth0();
 
-  // useEffect(() => {
-  //   if (user && email === "") {
-  //     setEmail(user.email);
-  //     setEmailConfirmation(user.email);
-  //   }
-  // });
+  useEffect(() => {
+    if (user && email === "") {
+      setEmail(user.email);
+      setEmailConfirmation(user.email);
+    }
+  }, [user]);
 
   const handleEmailChange = event => {
     setEmail(event.target.value);
@@ -104,6 +104,27 @@ const CheckoutForm = props => {
     }
   };
 
+  const renderEmailInputs = () => {
+    return user ? (
+      <Input disabled label="Email*" value={user.email} />
+    ) : (
+      <Fragment>
+        <Input
+          focus
+          label="Email*"
+          placeholder="e.g. jane.goodall@earth.co"
+          onChange={handleEmailChange}
+        />
+        <Input
+          focus
+          label="Confirm Email*"
+          placeholder="e.g. jane.goodall@earth.co"
+          onChange={handleEmailConfirmationChange}
+        />
+      </Fragment>
+    );
+  };
+
   return (
     <Fragment>
       <Container className="checkout-form">
@@ -133,18 +154,7 @@ const CheckoutForm = props => {
             }
           />
         </div>
-        <Input
-          focus
-          label="Email*"
-          placeholder="e.g. jane.goodall@earth.co"
-          onChange={handleEmailChange}
-        />
-        <Input
-          focus
-          label="Confirm Email*"
-          placeholder="e.g. jane.goodall@earth.co"
-          onChange={handleEmailConfirmationChange}
-        />
+        {renderEmailInputs()}
         <div className="card-form">
           <div style={{ width: "25%" }}>
             <Label size="large" style={{ height: "85%", width: "100%" }}>
