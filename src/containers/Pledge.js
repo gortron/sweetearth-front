@@ -1,13 +1,13 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
 import { store } from "../store.js";
 import { useProjectsDispatch } from "../utils/utility_functions";
-import Projects from "./Projects";
-import CheckoutForm from "../components/CheckoutForm";
-import CheckoutSteps from "../components/CheckoutSteps";
-
 import { Container, Header, Image } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
 import "@lottiefiles/lottie-player";
+
+import Projects from "./Projects";
+import CheckoutForm from "../components/CheckoutForm";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const Pledge = () => {
   const { state, dispatch } = useContext(store);
@@ -37,11 +37,13 @@ const Pledge = () => {
     setStatus("unselected");
   };
 
-  return (
-    <Container fluid className="page">
-      <CheckoutSteps status={status} />
-      {status === "unselected" ? <Projects page="pledge" /> : null}
-      {status === "selected" ? (
+  const ifUnselectedRenderProjects = () => {
+    if (status === "unselected") return <Projects page="pledge" />;
+  };
+
+  const ifSelectedRenderCheckout = () => {
+    if (status === "selected")
+      return (
         <Container className="pledge-checkout">
           <Image rounded src={checkout.imgUrl} style={{ width: "60%" }}></Image>
           <Elements>
@@ -51,8 +53,12 @@ const Pledge = () => {
             />
           </Elements>
         </Container>
-      ) : null}
-      {status === "paid" ? (
+      );
+  };
+
+  const ifPaidRenderConfirmation = () => {
+    if (status === "paid")
+      return (
         <Fragment>
           <Container>
             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -83,7 +89,15 @@ const Pledge = () => {
             {checkout.name}. We've sent you an email with a confirmation number.
           </p>
         </Fragment>
-      ) : null}
+      );
+  };
+
+  return (
+    <Container fluid className="page">
+      <CheckoutSteps status={status} />
+      {ifUnselectedRenderProjects()}
+      {ifSelectedRenderCheckout()}
+      {ifPaidRenderConfirmation()}
     </Container>
   );
 };
