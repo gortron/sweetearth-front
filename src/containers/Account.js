@@ -35,25 +35,25 @@ const Account = () => {
       return userData.pledges.map((pledge, idx) => {
         return (
           <Fragment>
-            <div key={idx} className="user-pledges">
-              <Image src={pledge.project.imgUrl} style={{ width: "30%" }} />
-              <div>
+            <Container key={idx} className="user-pledges">
+              <Image src={pledge.project.imgUrl} style={{ width: "50%" }} />
+              <Container className="user-pledges-text">
                 <Header style={{ color: "#758E50", fontSize: "2em" }}>
                   ${pledge.amount / 100}
                 </Header>
                 <Header style={{ fontSize: "1.33em" }}>
                   on {formatDate(pledge)} for {pledge.project.name}
                 </Header>
-              </div>
-              <Button
-                as={Link}
-                to={projectUrl(pledge.project.name)}
-                style={{ alignSelf: "center" }}
-              >
-                View Project
-              </Button>
-            </div>
-            <Divider />
+                <Button
+                  as={Link}
+                  to={projectUrl(pledge.project.name)}
+                  style={{ alignSelf: "center" }}
+                >
+                  View Project
+                </Button>
+              </Container>
+            </Container>
+            <Divider style={{ width: "100%" }} />
           </Fragment>
         );
       });
@@ -80,7 +80,10 @@ const Account = () => {
           content="Your Pledge History"
           style={{ fontSize: "3em" }}
         ></Header>
-
+        <p style={{ fontSize: "1.33em" }}>
+          You've pledged {userData ? userData.pledges.length : 0} times.
+        </p>
+        <Divider style={{ width: "100%" }} />
         {renderPledges()}
         <Button className="logout-button" onClick={() => logout()}>
           Log out

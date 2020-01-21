@@ -155,15 +155,32 @@ div.card-form * {
 
 .ui.container.account {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.ui.container.user-pledges {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui.container.user-pledges-text {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
 }
 
 .ui.container.account * {
   margin-bottom: 10px;
   margin-top: 10px;
-  margin-right: 10px;
-  text-align: left;
-  display: inline-block;
 }
 
 /* .ui.container .account .user-pledges {
