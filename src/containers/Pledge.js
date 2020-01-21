@@ -46,7 +46,11 @@ const Pledge = () => {
     if (status === "selected")
       return (
         <Container className="pledge-checkout">
-          <Image rounded src={checkout.imgUrl} style={{ width: "60%" }}></Image>
+          <Image
+            rounded
+            src={checkout.imgUrl}
+            style={{ width: "60%", marginBottom: "10px" }}
+          ></Image>
           <Elements>
             <CheckoutForm
               confirmPayment={confirmPayment}

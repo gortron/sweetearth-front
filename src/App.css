@@ -1,4 +1,3 @@
-/* from forest-templates/cover */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: grayscale;
@@ -45,14 +44,6 @@ body {
   background-color: #f4c366 !important;
 }
 
-/* .ui.inverted.vertical.segment {
-  height: 100vh;
-  background-color: #fffcf9;
-} */
-
-/* .ui.container.nav {
-} */
-
 .ui.page.container {
   padding-top: 70px;
   padding-bottom: 55px;
@@ -69,12 +60,8 @@ body {
 }
 
 .ui.home.container {
-  /* padding-top: 4%; */
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start;
-  align-items: flex-start;
-  align-content: flex-start;  */
 }
 
 .ui.about-container {
@@ -128,27 +115,14 @@ body {
 }
 
 div.card-form {
-  /* display: inline-block !important; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* width: 20%; */
-  /* border: 1px solid #85b7d9; */
-}
-
-div.card-form * {
-  /* display: inline-block !important; */
-  /* width: 50%; */
-  /* border: 1px solid #85b7d9; */
 }
 
 .StripeElement {
-  /* display: block; */
-  /* display: inline-block; */
   border: 1px solid #85b7d9;
   border-radius: 5px;
-  /* margin: 10px 0 20px 0; */
-  /* max-width: 500px; */
   padding: 10px 14px;
   background: white;
 }
@@ -175,18 +149,13 @@ div.card-form * {
   align-content: center;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 40%;
 }
 
 .ui.container.account * {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-
-/* .ui.container .account .user-pledges {
-  align-self: flex-start;
-  font-size: 1.33em;
-} */
 
 .ui.container .account .logout-button {
   align-self: center;

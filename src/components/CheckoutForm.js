@@ -109,7 +109,7 @@ const CheckoutForm = props => {
       <div>
         <Input
           focus
-          label="Pledge Amount ($)*"
+          label="Amount ($)*"
           placeholder="e.g. 10"
           onChange={handleAmountChange}
         />
@@ -143,7 +143,7 @@ const CheckoutForm = props => {
         />
         <Input
           focus
-          label="Confirm Email*"
+          label="Confirm*"
           placeholder="e.g. jane.goodall@earth.co"
           onChange={handleEmailConfirmationChange}
         />

@@ -36,7 +36,7 @@ const Account = () => {
         return (
           <Fragment>
             <Container key={idx} className="user-pledges">
-              <Image src={pledge.project.imgUrl} style={{ width: "50%" }} />
+              <Image src={pledge.project.imgUrl} style={{ width: "60%" }} />
               <Container className="user-pledges-text">
                 <Header style={{ color: "#758E50", fontSize: "2em" }}>
                   ${pledge.amount / 100}
@@ -73,6 +73,9 @@ const Account = () => {
         This is your account page. Here, you can see a history of your pledges,
         or log out.
       </p>
+      <Button className="logout-button" onClick={() => logout()}>
+        Log out
+      </Button>
       <Divider style={{ marginTop: "10px", marginBottom: "10px" }} />
       <Container className="account">
         <Header
@@ -85,9 +88,6 @@ const Account = () => {
         </p>
         <Divider style={{ width: "100%" }} />
         {renderPledges()}
-        <Button className="logout-button" onClick={() => logout()}>
-          Log out
-        </Button>
       </Container>
     </Container>
   );
