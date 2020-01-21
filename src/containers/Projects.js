@@ -5,16 +5,11 @@ import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
 const Projects = props => {
-  // const { context, data, getProjects, checkoutProject } = props;
   const { page } = props;
-  const { state, dispatch } = useContext(store);
+  const { state } = useContext(store);
   const { mobile, projects } = state;
 
   useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
-
-  useEffect(() => {
-    // if (!projects) dispatch({ type: "projects", payload: getProjects() });
-  });
 
   const handleTitle = () => {
     let title = "";

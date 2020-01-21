@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { StateProvider } from "./store.js";
-import * as serviceWorker from "./serviceWorker";
+import { StripeProvider } from "react-stripe-elements";
 import { Auth0Provider } from "./react-auth0";
 import config from "./auth_config.json";
 import history from "./utils/history";
+import * as serviceWorker from "./serviceWorker";
 
 // A function that routes the user to the right place
 // after login
@@ -26,7 +27,9 @@ const app = (
       redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
-      <App />
+      <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
+        <App />
+      </StripeProvider>
     </Auth0Provider>
   </StateProvider>
 );

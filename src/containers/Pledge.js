@@ -3,15 +3,15 @@ import { store } from "../store.js";
 import { useProjectsDispatch } from "../utils/utility_functions";
 import Projects from "./Projects";
 import CheckoutForm from "../components/CheckoutForm";
+import CheckoutSteps from "../components/CheckoutSteps";
 
-import { Container, Header, Step, Image } from "semantic-ui-react";
+import { Container, Header, Image } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
 import "@lottiefiles/lottie-player";
 
 const Pledge = () => {
-  // const { data, getProjects, checkout, checkoutProject } = props;
   const { state, dispatch } = useContext(store);
-  const { projects, checkout } = state;
+  const { checkout } = state;
 
   const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
@@ -19,20 +19,17 @@ const Pledge = () => {
   useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
 
   useEffect(() => {
-    // if (!projects) dispatch({ type: "projects", payload: getProjects() });
     if (checkout && status === "unselected") projectSelected({ ...checkout });
   });
 
   const projectSelected = project => {
     setStatus("selected");
     dispatch({ type: "checkout", payload: { ...project } });
-    // checkoutProject({ ...project });
   };
 
   const confirmPayment = amount => {
     setStatus("paid");
     setAmount(amount / 100);
-    dispatch({ type: "checkout", payload: null });
   };
 
   const cancelPledge = () => {
@@ -40,87 +37,9 @@ const Pledge = () => {
     setStatus("unselected");
   };
 
-  const renderSteps = () => {
-    switch (status) {
-      case "unselected":
-        return (
-          <Step.Group>
-            <Step active>
-              <Step.Content>
-                <Step.Title>Pick Project</Step.Title>
-                <Step.Description>
-                  Choose a project to pledge to
-                </Step.Description>
-              </Step.Content>
-            </Step>
-            <Step>
-              <Step.Content>
-                <Step.Title>Payment</Step.Title>
-                <Step.Description>Enter billing information</Step.Description>
-              </Step.Content>
-            </Step>
-            <Step>
-              <Step.Content>
-                <Step.Title>Pledge Confirmation</Step.Title>
-                <Step.Description> Thanks </Step.Description>
-              </Step.Content>
-            </Step>
-          </Step.Group>
-        );
-      case "selected":
-        return (
-          <Step.Group>
-            <Step>
-              <Step.Content>
-                <Step.Title>🌱</Step.Title>
-                <Step.Description>✅ Project Selected</Step.Description>
-              </Step.Content>
-            </Step>
-            <Step active>
-              <Step.Content>
-                <Step.Title>Payment</Step.Title>
-                <Step.Description>Enter billing information</Step.Description>
-              </Step.Content>
-            </Step>
-            <Step>
-              <Step.Content>
-                <Step.Title>Pledge Confirmation</Step.Title>
-                <Step.Description> Thanks </Step.Description>
-              </Step.Content>
-            </Step>
-          </Step.Group>
-        );
-      case "paid":
-        return (
-          <Step.Group>
-            <Step>
-              <Step.Content>
-                <Step.Title>🌱</Step.Title>
-                <Step.Description>✅ Project Selected</Step.Description>
-              </Step.Content>
-            </Step>
-            <Step>
-              <Step.Content>
-                <Step.Title>🌲</Step.Title>
-                <Step.Description>✅ Information Provided</Step.Description>
-              </Step.Content>
-            </Step>
-            <Step active>
-              <Step.Content>
-                <Step.Title>🌎</Step.Title>
-                <Step.Description> ✅ Pledge Confirmed </Step.Description>
-              </Step.Content>
-            </Step>
-          </Step.Group>
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
     <Container fluid className="page">
-      {renderSteps()}
+      <CheckoutSteps status={status} />
       {status === "unselected" ? <Projects page="pledge" /> : null}
       {status === "selected" ? (
         <Container className="pledge-checkout">

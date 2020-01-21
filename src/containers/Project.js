@@ -12,9 +12,8 @@ const Project = props => {
   useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
 
   useEffect(() => {
-    // if (!projects) dispatch({ type: "projects", payload: getProjects() });
     if (projects && !project) findProject();
-  });
+  }, [projects]);
 
   const findProject = () => {
     // This function converts pathname to project.name, then filters that project from data.
