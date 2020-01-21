@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
 import { store } from "../store";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import { useAuth0 } from "../react-auth0";
+import { useAuth0 } from "../utils/react-auth0";
 
 import {
   Button,
@@ -104,6 +104,32 @@ const CheckoutForm = props => {
     }
   };
 
+  const renderAmountInput = () => {
+    return (
+      <div>
+        <Input
+          focus
+          label="Pledge Amount ($)*"
+          placeholder="e.g. 10"
+          onChange={handleAmountChange}
+        />
+        <Popup
+          inverted
+          content="Wondering how much to Pledge? As a rough estimate, multiply your hours flown by x1.5, and add a dollar sign in front. So for a 6 hour flight, 6 x 1.5 = $9. This is a back-of-the-envelope estimate. Check out cooleffect.org for more info on calculating your offset, and other projects you can contribute to."
+          trigger={
+            <Button
+              circular
+              size="tiny"
+              primary
+              icon="info"
+              style={{ marginLeft: "10px" }}
+            />
+          }
+        />
+      </div>
+    );
+  };
+
   const renderEmailInputs = () => {
     return user ? (
       <Input disabled label="Email*" value={user.email} />
@@ -125,6 +151,41 @@ const CheckoutForm = props => {
     );
   };
 
+  const renderCardInput = () => {
+    return (
+      <div className="card-form">
+        <div style={{ width: "25%" }}>
+          <Label size="large" style={{ height: "85%", width: "100%" }}>
+            Payment Card*
+          </Label>
+        </div>
+        <div style={{ width: "75%" }}>
+          <CardElement />
+        </div>
+      </div>
+    );
+  };
+
+  const renderCheckoutAndCancelButtons = () => {
+    return (
+      <Button.Group>
+        <Button
+          positive
+          icon="checkmark"
+          content="Complete Pledge"
+          onClick={submit}
+        ></Button>
+        <Button.Or />
+        <Button
+          icon="cancel"
+          size="mini"
+          content="Cancel"
+          onClick={() => cancelPledge()}
+        ></Button>
+      </Button.Group>
+    );
+  };
+
   return (
     <Fragment>
       <Container className="checkout-form">
@@ -133,53 +194,10 @@ const CheckoutForm = props => {
             Pledging to: {checkout.name}
           </Header>
         </div>
-        <div>
-          <Input
-            focus
-            label="Pledge Amount ($)*"
-            placeholder="e.g. 10"
-            onChange={handleAmountChange}
-          />
-          <Popup
-            inverted
-            content="Wondering how much to Pledge? As a rough estimate, multiply your hours flown by x1.5, and add a dollar sign in front. So for a 6 hour flight, 6 x 1.5 = $9. This is a back-of-the-envelope estimate. Check out cooleffect.org for more info on calculating your offset, and other projects you can contribute to."
-            trigger={
-              <Button
-                circular
-                size="tiny"
-                primary
-                icon="info"
-                style={{ marginLeft: "10px" }}
-              />
-            }
-          />
-        </div>
+        {renderAmountInput()}
         {renderEmailInputs()}
-        <div className="card-form">
-          <div style={{ width: "25%" }}>
-            <Label size="large" style={{ height: "85%", width: "100%" }}>
-              Payment Card*
-            </Label>
-          </div>
-          <div style={{ width: "75%" }}>
-            <CardElement />
-          </div>
-        </div>
-        <Button.Group>
-          <Button
-            positive
-            icon="checkmark"
-            content="Complete Pledge"
-            onClick={submit}
-          ></Button>
-          <Button.Or />
-          <Button
-            icon="cancel"
-            size="mini"
-            content="Cancel"
-            onClick={() => cancelPledge()}
-          ></Button>
-        </Button.Group>
+        {renderCardInput()}
+        {renderCheckoutAndCancelButtons()}
       </Container>
       <div>{renderIssues()}</div>
     </Fragment>

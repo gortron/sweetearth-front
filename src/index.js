@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { StateProvider } from "./store.js";
 import { StripeProvider } from "react-stripe-elements";
-import { Auth0Provider } from "./react-auth0";
+import { Auth0Provider } from "./utils/react-auth0";
 import config from "./auth_config.json";
 import history from "./utils/history";
 import * as serviceWorker from "./serviceWorker";

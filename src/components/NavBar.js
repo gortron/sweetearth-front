@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useAuth0 } from "../react-auth0";
+import { useAuth0 } from "../utils/react-auth0";
 import { Dropdown, Menu, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { store } from "../store";

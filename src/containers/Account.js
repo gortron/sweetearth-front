@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "../react-auth0";
+import { useAuth0 } from "../utils/react-auth0";
 import { Container, Header, Button } from "semantic-ui-react";
 
 const Account = () => {
