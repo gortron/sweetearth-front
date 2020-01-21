@@ -36,7 +36,12 @@ const ProjectCard = props => {
         );
       case "projects":
         return (
-          <Button content="Learn More" as={Link} to={projectUrl()}></Button>
+          <Button
+            content="Learn More"
+            style={{ marginTop: "10px" }}
+            as={Link}
+            to={projectUrl()}
+          ></Button>
         );
       default:
         return <p>Loading...</p>;

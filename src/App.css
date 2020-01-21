@@ -22,6 +22,7 @@ body {
 
 .ui.menu {
   background-color: #758e4f;
+  font-family: "Montserrat", sans-serif;
 }
 
 .ui.dropdown {
@@ -75,6 +76,49 @@ body {
 .ui.about-container .about-container-element {
   max-width: 300px;
   margin: 2em;
+}
+
+h1,
+h3 {
+  font-family: "Cormorant", serif !important;
+}
+
+h4 {
+  font-family: "Montserrat", serif !important;
+  font-size: 20px !important;
+}
+
+h5 {
+  font-family: "Montserrat", serif !important;
+  font-size: 16px !important;
+}
+
+div.header {
+  font-family: "Montserrat", serif !important;
+  font-size: 20px !important;
+}
+
+.ui.button {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+div.meta {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 14px !important;
+}
+
+.ui.header {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+p {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 14px !important;
+}
+
+i {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 18px !important;
 }
 
 .ui.home-hero {

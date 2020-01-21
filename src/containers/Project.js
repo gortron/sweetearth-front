@@ -59,10 +59,10 @@ const Project = props => {
         </Container>
 
         <Container className="project-content">
-          <h3>
+          <h4>
             <i>Drawdown</i> solution type - {project.category}
-          </h3>
-          <h4>Estimated reduction (tons CO2) - {project.emissionReduction}</h4>
+          </h4>
+          <h5>Estimated reduction (tons CO2) - {project.emissionReduction}</h5>
           <p>{project.content}</p>
           <p>
             <a href={project.siteUrl}>🌎 Project Website</a>

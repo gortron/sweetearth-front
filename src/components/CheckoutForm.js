@@ -121,7 +121,7 @@ const CheckoutForm = props => {
               circular
               size="tiny"
               primary
-              icon="info"
+              content="i"
               style={{ marginLeft: "10px" }}
             />
           }
@@ -169,17 +169,11 @@ const CheckoutForm = props => {
   const renderCheckoutAndCancelButtons = () => {
     return (
       <Button.Group>
-        <Button
-          positive
-          icon="checkmark"
-          content="Complete Pledge"
-          onClick={submit}
-        ></Button>
+        <Button positive content="✓ Complete Pledge" onClick={submit}></Button>
         <Button.Or />
         <Button
-          icon="cancel"
           size="mini"
-          content="Cancel"
+          content="ｘ Cancel"
           onClick={() => cancelPledge()}
         ></Button>
       </Button.Group>
