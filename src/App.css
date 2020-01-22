@@ -1,3 +1,5 @@
+/* Site-wide */
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: grayscale;
@@ -20,6 +22,8 @@ body {
   background-color: #fffcf9;
 }
 
+/* Menus */
+
 .ui.menu {
   background-color: #758e4f;
   font-family: "Montserrat", sans-serif;
@@ -37,6 +41,8 @@ body {
   justify-content: center;
 }
 
+/* Buttons */
+
 .ui.button.positive {
   background-color: #95d6c5 !important;
 }
@@ -44,6 +50,8 @@ body {
 .ui.button.primary {
   background-color: #f4c366 !important;
 }
+
+/* Page Templates */
 
 .ui.page.container {
   padding-top: 70px;
@@ -60,10 +68,25 @@ body {
   padding-bottom: 55px;
 }
 
+/* Home Page */
+
 .ui.home.container {
   display: flex;
   flex-direction: column;
 }
+
+.ui.home-hero {
+  padding-top: 160px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 50vh;
+  background: url(https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
+    no-repeat left top;
+  background-size: cover;
+}
+
+/* About Page */
 
 .ui.about-container {
   padding-top: 40px;
@@ -77,6 +100,112 @@ body {
   max-width: 300px;
   margin: 2em;
 }
+
+/* Overview, used in Home and Aboout pages*/
+
+.ui.overview {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.ui.overview .overview-element {
+  max-width: 300px;
+  margin: 2em;
+}
+
+/* Project Page */
+
+.ui.hero {
+  padding-top: 160px;
+  height: 50vh;
+}
+
+.ui.project-content {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 60%;
+  text-align: left;
+}
+
+/* Account and User Pledges */
+
+.ui.container.account {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.ui.container.account * {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.ui.container.user-pledges {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui.container.user-pledges-text {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+
+.ui.container .account .logout-button {
+  align-self: center;
+}
+
+/* Checkout Page and Checkout Form */
+
+div.card-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ui.container.pledge-checkout {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui.container.checkout-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.ui.container.checkout-form.input {
+  width: 50% !important;
+}
+
+.ui.container.checkout-form * {
+  padding-bottom: 10px;
+}
+
+.StripeElement {
+  border: 1px solid #85b7d9;
+  border-radius: 5px;
+  padding: 10px 14px;
+  background: white;
+}
+
+/* Fonts */
+/* NOTE: While it is encouraged by Semantic contributors to change Fonts by creating a "custom theme", that solution seemed like over-engineering for the scope of this site. */
 
 h1,
 h3 {
@@ -127,110 +256,4 @@ p {
 i {
   font-family: "Montserrat", sans-serif !important;
   font-size: 18px !important;
-}
-
-.ui.home-hero {
-  padding-top: 160px;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  height: 50vh;
-  background: url(https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
-    no-repeat left top;
-  background-size: cover;
-}
-
-.ui.hero {
-  padding-top: 160px;
-  height: 50vh;
-}
-
-.ui.overview {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  text-align: left;
-}
-
-.ui.overview .overview-element {
-  max-width: 300px;
-  margin: 2em;
-}
-
-.ui.project-content {
-  padding-top: 5%;
-  padding-bottom: 5%;
-  width: 60%;
-  text-align: left;
-}
-
-div.card-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.StripeElement {
-  border: 1px solid #85b7d9;
-  border-radius: 5px;
-  padding: 10px 14px;
-  background: white;
-}
-
-.ui.container.account {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-}
-
-.ui.container.user-pledges {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-}
-
-.ui.container.user-pledges-text {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
-}
-
-.ui.container.account * {
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.ui.container .account .logout-button {
-  align-self: center;
-}
-
-.ui.container.pledge-checkout {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ui.container.checkout-form {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-.ui.container.checkout-form.input {
-  width: 50% !important;
-}
-
-.ui.container.checkout-form * {
-  padding-bottom: 10px;
 }

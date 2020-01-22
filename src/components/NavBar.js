@@ -34,7 +34,7 @@ const NavBar = () => {
             sweetearth
           </Menu.Item>
           <Menu.Item>
-            <Dropdown icon="align justify" position="left">
+            <Dropdown text="Menu" position="left">
               <Dropdown.Menu>
                 <Dropdown.Item as={Link} to="/about">
                   About
