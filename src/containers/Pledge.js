@@ -17,7 +17,11 @@ const Pledge = () => {
   const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
 
-  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+  useProjectsDispatch(
+    `https://sweetearth.herokuapp.com/projects`,
+    store,
+    "projects"
+  );
 
   useEffect(() => {
     if (checkout && status === "unselected") projectSelected({ ...checkout });

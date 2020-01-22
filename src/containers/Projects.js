@@ -9,7 +9,11 @@ const Projects = props => {
   const { state } = useContext(store);
   const { mobile, projects } = state;
 
-  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+  useProjectsDispatch(
+    `https://sweetearth.herokuapp.com/projects`,
+    store,
+    "projects"
+  );
 
   const handleTitle = () => {
     let title = "";

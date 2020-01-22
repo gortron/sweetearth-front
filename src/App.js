@@ -20,7 +20,11 @@ const App = () => {
   const { dispatch } = useContext(store);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+  useProjectsDispatch(
+    `https://sweetearth.herokuapp.com/projects`,
+    store,
+    "projects"
+  );
 
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);

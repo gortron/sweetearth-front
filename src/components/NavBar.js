@@ -13,7 +13,7 @@ const NavBar = () => {
   const handleAuth = async () => {
     await loginWithRedirect({});
     isAuthenticated &&
-      fetch("http://localhost:3000/users/create", {
+      fetch("https://sweetearth.herokuapp.com/users/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user)

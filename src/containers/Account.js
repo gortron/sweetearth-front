@@ -13,7 +13,7 @@ const Account = () => {
 
   const getUser = async () => {
     // this function should take the authenticated user's email address, and use it to query the backend for the user's pledge history
-    const endpoint = `http://localhost:3000/users/${user.email}`;
+    const endpoint = `https://sweetearth.herokuapp.com/users/${user.email}`;
     const response = await fetch(endpoint);
     const data = await response.json();
     setUserData(data);

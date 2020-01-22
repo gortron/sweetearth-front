@@ -9,7 +9,11 @@ const Project = props => {
   const { projects } = state;
   const [project, setProject] = useState(null);
 
-  useProjectsDispatch(`http://localhost:3000/projects`, store, "projects");
+  useProjectsDispatch(
+    `https://sweetearth.herokuapp.com/projects`,
+    store,
+    "projects"
+  );
 
   useEffect(() => {
     if (projects && !project) findProject();
