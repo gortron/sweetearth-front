@@ -98,6 +98,14 @@ div.header {
   font-size: 20px !important;
 }
 
+div.step {
+  font-family: "Montserrat", serif !important;
+}
+
+div.ui.label {
+  font-family: "Montserrat", sans-serif !important;
+}
+
 .ui.button {
   font-family: "Montserrat", sans-serif !important;
 }

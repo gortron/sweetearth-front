@@ -23,7 +23,7 @@ const Confirmation = props => {
         <Header style={{ fontSize: "2em" }}>
           You did it! Here's a haiku, as a treat:
         </Header>
-        <Header style={{ fontSize: "1.33em" }}>
+        <Header as="h4" style={{ fontSize: "1.33em", color: "#758E50" }}>
           <i>
             Spring is passing.
             <br />

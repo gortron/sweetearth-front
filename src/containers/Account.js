@@ -36,12 +36,16 @@ const Account = () => {
         return (
           <Fragment>
             <Container key={idx} className="user-pledges">
-              <Image src={pledge.project.imgUrl} style={{ width: "60%" }} />
+              <Image
+                rounded
+                src={pledge.project.imgUrl}
+                style={{ width: "60%" }}
+              />
               <Container className="user-pledges-text">
-                <Header style={{ color: "#758E50", fontSize: "2em" }}>
+                <Header as="h4" style={{ color: "#758E50", fontSize: "2em" }}>
                   ${pledge.amount / 100}
                 </Header>
-                <Header style={{ fontSize: "1.33em" }}>
+                <Header as="h5" style={{ fontSize: "1.33em" }}>
                   on {formatDate(pledge)} for {pledge.project.name}
                 </Header>
                 <Button
