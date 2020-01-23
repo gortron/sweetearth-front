@@ -2,12 +2,12 @@ import React, { useState, useEffect, Fragment, useContext } from "react";
 import { store } from "../store";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import { useAuth0 } from "../utils/react-auth0";
+import { postCharge } from "../utils/queries";
 
 import {
   Button,
   Input,
   Container,
-  Header,
   Label,
   Message,
   Popup
@@ -95,12 +95,7 @@ const CheckoutForm = props => {
         amount: amount,
         project_name: checkout.name
       };
-      let response = await fetch("http://localhost:3000/charge", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
-
+      let response = await postCharge(body);
       if (response.ok) confirmPayment(amount);
     }
   };
