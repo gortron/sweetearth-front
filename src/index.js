@@ -27,7 +27,7 @@ const app = (
       redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
-      <StripeProvider apiKey="pk_test_waOqfE4v56zJkQEG6l4EgKUD004Ku9v3wY">
+      <StripeProvider apiKey="pk_live_pmqnlQzvbBpYSS4LHztsn2la00Gpj4L43A">
         <App />
       </StripeProvider>
     </Auth0Provider>
