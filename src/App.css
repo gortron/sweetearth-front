@@ -90,7 +90,8 @@ body {
 }
 
 .ui.home-hero {
-  padding-top: 160px;
+  /* padding-top: 160px; */
+  padding-top: 15vh;
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -134,14 +135,15 @@ body {
 /* Project Page */
 
 .ui.hero {
-  padding-top: 160px;
+  /* padding-top: 160px; */
+  padding-top: 13vh;
   height: 50vh;
 }
 
 .ui.pledge-hero {
   margin-top: 30px;
   margin-bottom: 40px;
-  padding-top: 5vh;
+  padding-top: 3vh;
   height: 20vh;
   border-radius: 5px;
 }
