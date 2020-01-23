@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { store } from "../store.js";
-import { useProjectsDispatch } from "../utils/utility_functions";
+import { useProjectsDispatch } from "../utils/queries";
 import { Container, Image, Header } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
 import "@lottiefiles/lottie-player";
@@ -17,11 +17,7 @@ const Pledge = () => {
   const [amount, setAmount] = useState(0);
   const [status, setStatus] = useState("unselected");
 
-  useProjectsDispatch(
-    `https://sweetearth.herokuapp.com/projects`,
-    store,
-    "projects"
-  );
+  useProjectsDispatch(`projects`, store, "projects");
 
   useEffect(() => {
     if (checkout && status === "unselected") projectSelected({ ...checkout });
@@ -45,23 +41,6 @@ const Pledge = () => {
   const ifUnselectedRenderProjects = () => {
     if (status === "unselected") return <Projects page="pledge" />;
   };
-
-  {
-    /* <Container
-          fluid
-          className="hero"
-          style={{
-            background: `url(${project.imgUrl}) no-repeat left top`,
-            backgroundSize: "cover"
-          }}
-        >
-          <Header
-            inverted
-            as="h1"
-            content={project.name}
-            style={{ fontSize: "3em" }}
-          ></Header> */
-  }
 
   const ifSelectedRenderCheckout = () => {
     if (status === "selected")
@@ -97,25 +76,6 @@ const Pledge = () => {
         </Container>
       );
   };
-
-  {
-    /* <Container className="pledge-checkout">
-          <Header as="h3" style={{ fontSize: "2em", marginTop: "40px" }}>
-            Pledging to: {checkout.name}
-          </Header>
-          <Image
-            rounded
-            src={checkout.imgUrl}
-            style={{ width: "60%", marginBottom: "50px" }}
-          ></Image>
-          <Elements>
-            <CheckoutForm
-              confirmPayment={confirmPayment}
-              cancelPledge={cancelPledge}
-            />
-          </Elements>
-        </Container> */
-  }
 
   const ifPaidRenderConfirmation = () => {
     if (status === "paid")
