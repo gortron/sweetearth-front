@@ -72,6 +72,7 @@ const CheckoutForm = props => {
     if (!emailIsValid.test(email) || !emailIsValid.test(emailConfirmation))
       temp.push("Check that the emails are valid addresses");
     if (amount < 500) temp.push("Amount needs to be at least $5");
+    if (amount > 10000000) temp.push("Amount needs to be less than $100,000");
     if (!token) temp.push("Check that the card information is valid");
 
     if (temp.length !== 0) {
@@ -120,7 +121,7 @@ const CheckoutForm = props => {
             <Button
               circular
               size="tiny"
-              primary
+              positive
               icon="info"
               style={{ marginLeft: "10px" }}
             />
@@ -170,7 +171,7 @@ const CheckoutForm = props => {
     return (
       <Button.Group>
         <Button
-          positive
+          primary
           icon="check"
           content="Complete Pledge"
           onClick={submit}

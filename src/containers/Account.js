@@ -77,7 +77,7 @@ const Account = () => {
         This is your account page. Here, you can see a history of your pledges,
         or log out.
       </p>
-      <Button className="logout-button" onClick={() => logout()}>
+      <Button negative className="logout-button" onClick={() => logout()}>
         Log out
       </Button>
       <Divider style={{ marginTop: "10px", marginBottom: "10px" }} />

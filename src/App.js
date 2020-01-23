@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { store } from "./store.js";
-import { useProjectsDispatch } from "./utils/utility_functions";
+import { useProjectsDispatch } from "./utils/queries";
 import history from "./utils/history";
 import { Router, Route, Switch } from "react-router-dom";
 import { Segment } from "semantic-ui-react";
@@ -20,11 +20,7 @@ const App = () => {
   const { dispatch } = useContext(store);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  useProjectsDispatch(
-    `https://sweetearth.herokuapp.com/projects`,
-    store,
-    "projects"
-  );
+  useProjectsDispatch(`projects`, store, "projects");
 
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
