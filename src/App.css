@@ -138,6 +138,14 @@ body {
   height: 50vh;
 }
 
+.ui.pledge-hero {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-top: 5vh;
+  height: 20vh;
+  border-radius: 5px;
+}
+
 .ui.project-content {
   padding-top: 5%;
   padding-bottom: 5%;

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Fragment, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { store } from "../store.js";
 import { useProjectsDispatch } from "../utils/utility_functions";
-import { Container, Image } from "semantic-ui-react";
+import { Container, Image, Header } from "semantic-ui-react";
 import { Elements } from "react-stripe-elements";
 import "@lottiefiles/lottie-player";
 
@@ -46,15 +46,48 @@ const Pledge = () => {
     if (status === "unselected") return <Projects page="pledge" />;
   };
 
+  {
+    /* <Container
+          fluid
+          className="hero"
+          style={{
+            background: `url(${project.imgUrl}) no-repeat left top`,
+            backgroundSize: "cover"
+          }}
+        >
+          <Header
+            inverted
+            as="h1"
+            content={project.name}
+            style={{ fontSize: "3em" }}
+          ></Header> */
+  }
+
   const ifSelectedRenderCheckout = () => {
     if (status === "selected")
       return (
         <Container className="pledge-checkout">
-          <Image
-            rounded
-            src={checkout.imgUrl}
-            style={{ width: "60%", marginBottom: "10px" }}
-          ></Image>
+          <Container
+            className="pledge-hero"
+            style={{
+              background: `url(${checkout.imgUrl}) no-repeat left top`,
+              backgroundSize: "cover"
+            }}
+          >
+            <Header
+              as="h3"
+              inverted
+              content="Pledging to:"
+              style={{ fontSize: "1.33em" }}
+            ></Header>
+            <Header
+              as="h3"
+              inverted
+              content={checkout.name}
+              style={{ fontSize: "2em" }}
+            ></Header>
+          </Container>
+
           <Elements>
             <CheckoutForm
               confirmPayment={confirmPayment}
@@ -64,6 +97,25 @@ const Pledge = () => {
         </Container>
       );
   };
+
+  {
+    /* <Container className="pledge-checkout">
+          <Header as="h3" style={{ fontSize: "2em", marginTop: "40px" }}>
+            Pledging to: {checkout.name}
+          </Header>
+          <Image
+            rounded
+            src={checkout.imgUrl}
+            style={{ width: "60%", marginBottom: "50px" }}
+          ></Image>
+          <Elements>
+            <CheckoutForm
+              confirmPayment={confirmPayment}
+              cancelPledge={cancelPledge}
+            />
+          </Elements>
+        </Container> */
+  }
 
   const ifPaidRenderConfirmation = () => {
     if (status === "paid")

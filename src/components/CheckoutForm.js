@@ -121,7 +121,7 @@ const CheckoutForm = props => {
             <Button
               circular
               size="tiny"
-              positive
+              primary
               icon="info"
               style={{ marginLeft: "10px" }}
             />
@@ -187,14 +187,17 @@ const CheckoutForm = props => {
     );
   };
 
-  return (
-    <Fragment>
-      <Container className="checkout-form">
-        <div>
+  {
+    /* <div>
           <Header as="h3" style={{ fontSize: "2em" }}>
             Pledging to: {checkout.name}
           </Header>
-        </div>
+        </div> */
+  }
+
+  return (
+    <Fragment>
+      <Container className="checkout-form">
         {renderAmountInput()}
         {renderEmailInputs()}
         {renderCardInput()}
