@@ -95,7 +95,7 @@ const CheckoutForm = props => {
         amount: amount,
         project_name: checkout.name
       };
-      let response = await fetch("http://localhost:3000/charge", {
+      let response = await fetch("https://sweetearth.herokuapp.com/charge", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
