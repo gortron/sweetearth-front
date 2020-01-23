@@ -3,7 +3,8 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: grayscale;
-  background-color: #fffcf9;
+  /* background-color: #fffcf9; */
+  background-color: #ebf2fa;
 }
 
 ::placeholder {
@@ -25,12 +26,12 @@ body {
 /* Menus */
 
 .ui.menu {
-  background-color: #758e4f;
+  background-color: #11270b;
   font-family: "Montserrat", sans-serif;
 }
 
 .ui.dropdown {
-  background-color: #758e4f;
+  background-color: #11270b;
 }
 
 .ui.menu * {
@@ -44,11 +45,24 @@ body {
 /* Buttons */
 
 .ui.button.positive {
-  background-color: #35ab38 !important;
+  /* background-color: #95d6c5 !important; */
+  background-color: #fc7753 !important;
+}
+
+.ui.button.negative {
+  /* background-color: #95d6c5 !important; */
+  background-color: #dd1c1a !important;
 }
 
 .ui.button.primary {
-  background-color: #35ab38 !important;
+  /* background-color: #f4c366 !important; */
+  background-color: #41aa14 !important;
+}
+
+.ui.button.hero-button {
+  /* background-color: #ebf2fa; */
+  background-color: #ffffff;
+  color: black;
 }
 
 /* Page Templates */
@@ -122,6 +136,14 @@ body {
 .ui.hero {
   padding-top: 160px;
   height: 50vh;
+}
+
+.ui.pledge-hero {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-top: 5vh;
+  height: 20vh;
+  border-radius: 5px;
 }
 
 .ui.project-content {

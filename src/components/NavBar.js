@@ -47,7 +47,7 @@ const NavBar = () => {
                 </Dropdown.Item>
                 {isAuthenticated ? (
                   <Dropdown.Item as={Link} to="/account" position="right">
-                    Account
+                    My Account
                   </Dropdown.Item>
                 ) : (
                   <Dropdown.Item position="right" onClick={() => handleAuth()}>
@@ -86,7 +86,7 @@ const NavBar = () => {
           </Menu.Item>
           {isAuthenticated ? (
             <Menu.Item as={Link} to="/account" position="right">
-              Account
+              My Account
             </Menu.Item>
           ) : (
             <Menu.Item position="right" onClick={() => handleAuth()}>

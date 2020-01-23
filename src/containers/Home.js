@@ -15,7 +15,7 @@ const Home = () => {
           }}
         ></Header>
         <Button
-          primary
+          className="hero-button"
           size="huge"
           content="Pledge Today"
           as={Link}

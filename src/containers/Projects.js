@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { store } from "../store.js";
-import { useProjectsDispatch } from "../utils/utility_functions";
+import { useProjectsDispatch } from "../utils/queries";
 import { Container, Header, Card } from "semantic-ui-react";
 import ProjectCard from "../components/ProjectCard";
 
@@ -9,11 +9,7 @@ const Projects = props => {
   const { state } = useContext(store);
   const { mobile, projects } = state;
 
-  useProjectsDispatch(
-    `https://sweetearth.herokuapp.com/projects`,
-    store,
-    "projects"
-  );
+  useProjectsDispatch(`projects`, store, "projects");
 
   const handleTitle = () => {
     let title = "";

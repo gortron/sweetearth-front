@@ -2,22 +2,19 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useAuth0 } from "../utils/react-auth0";
 import { Container, Header, Button, Image, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { getUser } from "../utils/queries";
 
 const Account = () => {
   const { loading, user, logout } = useAuth0();
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    if (user && !userData) getUser();
+    const getAndSetUserData = async () => {
+      const data = await getUser(`/users/${user.email}`);
+      setUserData(data);
+    };
+    if (user && !userData) getAndSetUserData();
   }, [user]);
-
-  const getUser = async () => {
-    // this function should take the authenticated user's email address, and use it to query the backend for the user's pledge history
-    const endpoint = `https://sweetearth.herokuapp.com/users/${user.email}`;
-    const response = await fetch(endpoint);
-    const data = await response.json();
-    setUserData(data);
-  };
 
   const formatDate = pledge => {
     let yyyymmdd = pledge.created_at.split("T")[0].split("-");
@@ -64,7 +61,7 @@ const Account = () => {
     }
   };
 
-  return loading || !user ? (
+  return loading || !userData ? (
     <div>Loading...</div>
   ) : (
     <Container className="page">
@@ -77,7 +74,7 @@ const Account = () => {
         This is your account page. Here, you can see a history of your pledges,
         or log out.
       </p>
-      <Button className="logout-button" onClick={() => logout()}>
+      <Button negative className="logout-button" onClick={() => logout()}>
         Log out
       </Button>
       <Divider style={{ marginTop: "10px", marginBottom: "10px" }} />

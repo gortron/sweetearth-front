@@ -2,12 +2,12 @@ import React, { useState, useEffect, Fragment, useContext } from "react";
 import { store } from "../store";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import { useAuth0 } from "../utils/react-auth0";
+import { postCharge } from "../utils/queries";
 
 import {
   Button,
   Input,
   Container,
-  Header,
   Label,
   Message,
   Popup
@@ -72,6 +72,7 @@ const CheckoutForm = props => {
     if (!emailIsValid.test(email) || !emailIsValid.test(emailConfirmation))
       temp.push("Check that the emails are valid addresses");
     if (amount < 500) temp.push("Amount needs to be at least $5");
+    if (amount > 10000000) temp.push("Amount needs to be less than $100,000");
     if (!token) temp.push("Check that the card information is valid");
 
     if (temp.length !== 0) {
@@ -94,12 +95,7 @@ const CheckoutForm = props => {
         amount: amount,
         project_name: checkout.name
       };
-      let response = await fetch("https://sweetearth.herokuapp.com/charge", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
-
+      let response = await postCharge(body);
       if (response.ok) confirmPayment(amount);
     }
   };
@@ -170,7 +166,7 @@ const CheckoutForm = props => {
     return (
       <Button.Group>
         <Button
-          positive
+          primary
           icon="check"
           content="Complete Pledge"
           onClick={submit}
@@ -186,14 +182,17 @@ const CheckoutForm = props => {
     );
   };
 
-  return (
-    <Fragment>
-      <Container className="checkout-form">
-        <div>
+  {
+    /* <div>
           <Header as="h3" style={{ fontSize: "2em" }}>
             Pledging to: {checkout.name}
           </Header>
-        </div>
+        </div> */
+  }
+
+  return (
+    <Fragment>
+      <Container className="checkout-form">
         {renderAmountInput()}
         {renderEmailInputs()}
         {renderCardInput()}
