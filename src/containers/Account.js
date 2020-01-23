@@ -61,9 +61,7 @@ const Account = () => {
     }
   };
 
-  return loading || !userData ? (
-    <div>Loading...</div>
-  ) : (
+  return (
     <Container className="page">
       <Header
         as="h1"
@@ -78,18 +76,24 @@ const Account = () => {
         Log out
       </Button>
       <Divider style={{ marginTop: "10px", marginBottom: "10px" }} />
-      <Container className="account">
-        <Header
-          as="h1"
-          content="Your Pledge History"
-          style={{ fontSize: "3em" }}
-        ></Header>
-        <p style={{ fontSize: "1.33em" }}>
-          You've pledged {userData ? userData.pledges.length : 0} times.
-        </p>
-        <Divider style={{ width: "100%" }} />
-        {renderPledges()}
-      </Container>
+      {loading || !userData ? (
+        <div>
+          <p>Your pledges will appear here, once you've made one.</p>
+        </div>
+      ) : (
+        <Container className="account">
+          <Header
+            as="h1"
+            content="Your Pledge History"
+            style={{ fontSize: "3em" }}
+          ></Header>
+          <p style={{ fontSize: "1.33em" }}>
+            You've pledged {userData ? userData.pledges.length : 0} times.
+          </p>
+          <Divider style={{ width: "100%" }} />
+          {renderPledges()}
+        </Container>
+      )}
     </Container>
   );
 };

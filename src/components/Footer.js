@@ -27,10 +27,7 @@ const Footer = () => {
           <Menu.Item as={Link} to="/pledge">
             Pledge
           </Menu.Item>
-          <Menu.Item
-            href="https://github.com/gortron/sweetearth-front"
-            target="_blank"
-          >
+          <Menu.Item href="https://github.com/gortron" target="_blank">
             github
           </Menu.Item>
           <Menu.Item position="right">
