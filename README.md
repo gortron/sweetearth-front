@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sweetearth
 
-## Available Scripts
+[Sweetearth](https://www.sweetearth.site) is an eCommerce platform for carbon offset projects, built with React and Rails.
 
-In the project directory, you can run:
+![Imgur](https://i.imgur.com/XwOlzD6.gif)
 
-### `yarn start`
+## Motivation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- I couldn't find an easy, 3-click carbon offset donation app, so I built one.
+- I wanted to explore the microservices architecture pattern. I identified Stripe & Auth0 as good candidates for services that met the needs of this project. 
+- I was curious to learn more about the type of projects people are doing to take of our ecosystem. If you're also curious, [Drawdown](https://www.drawdown.org/solutions-summary-by-rank) is a great place to start.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Stack
 
-### `yarn test`
+- React front-end, createContext and useReducer pattern for global state management
+- Rails and PostgreSQL back-end, Fast_JSON serializers. [Back-end repo here.](https://github.com/gortron/sweetearth-back/)
+- Auth0 implemented for handling authorization
+- Stripe integration for payment handling
+- Deployed through Netlify & Heroku
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `yarn build`
+- Users can sign up / log in through Auth0, including social login through Google
+- Users can select from 8 curated carbon offset projects to contribute to
+- Users can checkout as a guest or registered user, if registered their email information pre-fills
+- Users can make payments through Stripe
+- Users receive a success animation on payment confirmation, which is animated with Lottie
+- Users receive sign up and payment confirmation emails, handled in Auth0 and Stripe respectively
+- If users are logged in, they can see a history of their transactions
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+MIT © [@gortron](https://github.com/gortron)
