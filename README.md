@@ -2,7 +2,7 @@
 
 [Sweetearth](https://www.sweetearth.site) is an eCommerce platform for carbon offset projects, built with React and Rails.
 
-![Imgur](https://i.imgur.com/lsCMhx5.gif)
+![Imgur](https://i.imgur.com/XwOlzD6.gif)
 
 ## Motivation
 
